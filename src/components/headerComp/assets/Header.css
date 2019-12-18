@@ -1,0 +1,24 @@
+.Header {
+  padding: 1em 15%;
+}
+.Header-list {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.Header-list__item {}
+.Header-list__item--search {
+  width: 75%;
+}
+
+.subscribe-btn {
+  background-color: var(--brand-orange-bittersweet);
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  height: 43.5px;
+  padding: 5px 15px;
+  width: 160px;
+}

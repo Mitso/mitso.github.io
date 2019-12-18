@@ -1,0 +1,13 @@
+.Banner {
+  background: var(--secondary-blue-turquoise);
+}
+
+.Banner--inner {
+  padding: 2.5em 15%;
+  text-align: center;
+}
+
+.Banner__title {
+  font-size: 35px;
+  padding: 0 20%;
+}
