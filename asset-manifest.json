@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Mitso/Mitso.github.io/static/css/main.d94ce968.chunk.css",
+    "main.js": "/Mitso/Mitso.github.io/static/js/main.5689982d.chunk.js",
+    "main.js.map": "/Mitso/Mitso.github.io/static/js/main.5689982d.chunk.js.map",
+    "runtime-main.js": "/Mitso/Mitso.github.io/static/js/runtime-main.f29cb956.js",
+    "runtime-main.js.map": "/Mitso/Mitso.github.io/static/js/runtime-main.f29cb956.js.map",
+    "static/js/2.37620a93.chunk.js": "/Mitso/Mitso.github.io/static/js/2.37620a93.chunk.js",
+    "static/js/2.37620a93.chunk.js.map": "/Mitso/Mitso.github.io/static/js/2.37620a93.chunk.js.map",
+    "index.html": "/Mitso/Mitso.github.io/index.html",
+    "precache-manifest.2d28513a81665e5f8ca519bab920557c.js": "/Mitso/Mitso.github.io/precache-manifest.2d28513a81665e5f8ca519bab920557c.js",
+    "service-worker.js": "/Mitso/Mitso.github.io/service-worker.js",
+    "static/css/main.d94ce968.chunk.css.map": "/Mitso/Mitso.github.io/static/css/main.d94ce968.chunk.css.map",
+    "static/js/2.37620a93.chunk.js.LICENSE": "/Mitso/Mitso.github.io/static/js/2.37620a93.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f29cb956.js",
+    "static/js/2.37620a93.chunk.js",
+    "static/css/main.d94ce968.chunk.css",
+    "static/js/main.5689982d.chunk.js"
+  ]
+}
