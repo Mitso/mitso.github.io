@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.654ff54c.chunk.css",
-    "main.js": "/static/js/main.cd6d2867.chunk.js",
-    "main.js.map": "/static/js/main.cd6d2867.chunk.js.map",
+    "main.css": "/static/css/main.d8b8b20b.chunk.css",
+    "main.js": "/static/js/main.dacf645b.chunk.js",
+    "main.js.map": "/static/js/main.dacf645b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3007c9de.js",
     "runtime-main.js.map": "/static/js/runtime-main.3007c9de.js.map",
     "static/js/2.579e1c61.chunk.js": "/static/js/2.579e1c61.chunk.js",
     "static/js/2.579e1c61.chunk.js.map": "/static/js/2.579e1c61.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.7ee50a75658460502b060c4477d517e5.js": "/precache-manifest.7ee50a75658460502b060c4477d517e5.js",
+    "precache-manifest.f2a550d92331d48785f1a187e0af2c0f.js": "/precache-manifest.f2a550d92331d48785f1a187e0af2c0f.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.654ff54c.chunk.css.map": "/static/css/main.654ff54c.chunk.css.map",
+    "static/css/main.d8b8b20b.chunk.css.map": "/static/css/main.d8b8b20b.chunk.css.map",
     "static/js/2.579e1c61.chunk.js.LICENSE": "/static/js/2.579e1c61.chunk.js.LICENSE",
     "static/media/ndoh-logo.png": "/static/media/ndoh-logo.b2da18c7.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3007c9de.js",
     "static/js/2.579e1c61.chunk.js",
-    "static/css/main.654ff54c.chunk.css",
-    "static/js/main.cd6d2867.chunk.js"
+    "static/css/main.d8b8b20b.chunk.css",
+    "static/js/main.dacf645b.chunk.js"
   ]
 }
