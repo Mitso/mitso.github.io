@@ -1,6 +1,6 @@
 {
   "short_name": "Nurseconnect",
-  "name": "NurseConnect uses mobile technology to support nurses and midwives working in maternal health",
+  "name": "NurseConnect PWA",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ff6655",
+  "theme_color": "#213d55",
   "background_color": "#213d55"
 }
