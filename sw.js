@@ -1,15 +1,20 @@
-importScripts("/precache-manifest.842e603e59a513464a77b45a44a59979.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.e9b400bdefa68348c1ca4ff1905593ad.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
   // Global workbox
   if (workbox) {
     // Disable logging
     console.log("Workbox is loaded");
 
-    // addEventListener("message", event => {
-    //   if (event.data && event.data.type === "SKIP_WAITING") {
-    //     skipWaiting();
-    // });
+    workbox.skipWaiting();
+    /*
+    By default, a page's fetches won't go through a service worker
+    unless the page request itself went through a service worker.
+    So you'll need to refresh the page to see the
+    effects of the service worker.
 
+    clients.claim() can override this default, and take control of non-controlled pages.
+    */
+    workbox.clientsClaim();
     workbox.setConfig({ debug: true });
     workbox.core.setCacheNameDetails({
       prefix: "mpando",
