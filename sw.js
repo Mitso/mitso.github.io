@@ -1,21 +1,32 @@
-importScripts("/precache-manifest.a1005aafe08ec1139180c0a7147f3161.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/precache-manifest.37c39113702935e955baf336c152d8d9.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 // Global workbox
+
+const SW_VERSION = 'v1';
+const CACHE_NAME = 'mpando_sw';
+
+
+
 if (workbox) {
-
-  self.addEventListener("message", event => {
-    console.log(event.data,'::' ,event.type);
-    // if (event.data && event.data.type === "SKIP_WAITING") {
-    //   skipWaiting();
-    // }
-  });
-
-
   workbox.setConfig({ debug: true });
   workbox.core.setCacheNameDetails({
-    prefix: "mpando",
-    suffix: "v1"
+    prefix: CACHE_NAME,
+    suffix: SW_VERSION
   });
+
+
+  function matchFunction({ url }) {
+    const pages = ['/', '/offline'];
+    return pages.includes(url.pathname);
+  }
+
+  workbox.routing.registerRoute(
+    matchFunction,
+    new workbox.strategies.CacheFirst({
+      cacheName: 'html-cache'
+    })
+  );
+
   workbox.routing.registerRoute(
     /\.css$/,
     workbox.strategies.staleWhileRevalidate({
@@ -40,17 +51,25 @@ if (workbox) {
       ]
     })
   );
-  workbox.routing.registerRoute(
-    new RegExp("https://fonts.(?:.googlepis|gstatic).com/(.*)"),
-    workbox.strategies.cacheFirst({
-      cacheName: "googleapis",
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxEntries: 3
-        })
-      ]
-    })
-  );
+
+  self.addEventListener("message", event => {
+    console.log('MESSAGE SW-CUSTOM',event.data,'::' ,event.type);
+    // if (event.data && event.data.type === "SKIP_WAITING") {
+    //   skipWaiting();
+    // }
+  });
+
+
+  self.addEventListener('fetch', event => {
+    console.log('FETCH',event);
+    event.respondWith(fetch(event.request).catch(() => {
+      return caches.open(CACHE_NAME).then(cache => {
+        return cache.match('/offline.html');
+      });
+    }));
+  });
+
+
 
   workbox.precaching.precacheAndRoute(self.__precacheManifest);
 } else {
