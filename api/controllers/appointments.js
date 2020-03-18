@@ -39,14 +39,24 @@ const appointmentController = {
           Returns the saved appointment
           After a successful save
         */
+        const message = {
+          content: {
+            type: 'text',
+            text: 'Hello from Mpando test application',
+          },
+        };
+        nexmo.channel.send(
+          { type: 'whatsapp', number: '27645576224' },
+          { type: 'whatsapp', number: '27645576224' },
+          message,
+          (err, data) => { console.log(data.message_uuid); }
+        );
+
         Appointment.find({ _id: saved._id })
           .populate("slots")
           .exec((err, appointment) => res.json(appointment));
 
-        const from = 'Nexmo';
-        const to = '27645576224';
-        const text = 'Hello Mitso, your appointment schedule reminder.';
-        nexmo.message.sendSms(from, to, text);
+
       }
     });
   }
