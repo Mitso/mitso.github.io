@@ -99,12 +99,12 @@ module.exports = {
         new CleanWebpackPlugin(),
         new SentryWebpackPlugin({
             // sentry-cli configuration
-            authToken: process.env.SENTRY_AUTH_TOKEN,
+            authToken: 'f028dfa6b84247b2847d96113fbbb2eb60f5d37dd46049e08f35fffe4861e482',
             org: "mitsoq",
             project: "mitso-github-io",
 
             // webpack specific configuration
-            include: "./dist",
+            include: ".",
             ignore: ["node_modules", "webpack.config.js"],
         }),
     ],
