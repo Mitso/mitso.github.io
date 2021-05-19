@@ -4,7 +4,7 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import * as Sentry from "@sentry/browser";
-import { Integrations } from "@sentry/tracing";
+import * as Integrations from '@sentry/integrations';
 
 Vue.config.productionTip = false
 
