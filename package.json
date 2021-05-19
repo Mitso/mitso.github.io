@@ -17,8 +17,8 @@
     "start": "webpack serve --mode development"
   },
   "dependencies": {
-    "@sentry/browser": "^6.4.0",
-    "@sentry/integrations": "^6.4.0",
+    "@sentry/browser": "^6.4.1",
+    "@sentry/integrations": "^6.4.1",
     "@sentry/tracing": "^6.4.0",
     "core-js": "^3.6.5",
     "register-service-worker": "^1.7.1",

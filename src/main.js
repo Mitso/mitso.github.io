@@ -8,6 +8,17 @@ import * as Integrations from '@sentry/integrations';
 
 Vue.config.productionTip = false
 
+
+
+const appMainInstance = new Vue(
+    {
+        router,
+        store,
+        render: h => h(App)
+    }
+)
+
+
 Sentry.init({
     dsn: "https://40d9a9f0b70f4f4d846098fa6044d47e@o413908.ingest.sentry.io/5773954",
     integrations: [new Integrations.BrowserTracing()],
@@ -17,13 +28,5 @@ Sentry.init({
     // We recommend adjusting this value in production
     tracesSampleRate: 1.0,
 });
-
-const appMainInstance = new Vue(
-    {
-        router,
-        store,
-        render: h => h(App)
-    }
-)
 
 appMainInstance.$mount('#isixeko');
