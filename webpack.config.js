@@ -62,18 +62,6 @@ module.exports = {
         },
         ],
     },
-    plugins: [
-        new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
-            filename: "[name].[contenthash:8].css",
-            chunkFilename: "[name].[contenthash:8].css",
-        }),
-        new htmlWebpackPlugin({
-            template: path.resolve(__dirname, "public", "index.html"),
-            favicon: "./public/img/favicon.ico",
-        }),
-        new CleanWebpackPlugin(),
-    ],
     resolve: {
         alias: {
         vue$: "vue/dist/vue.runtime.esm.js",
@@ -94,9 +82,21 @@ module.exports = {
         },
         },
     },
-    // Sentry configuration
-    configureWebpack: {
-        plugins: [
+    devServer: {
+        historyApiFallback: true,
+        port: 9000
+    },
+    plugins: [
+        new VueLoaderPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "[name].[contenthash:8].css",
+            chunkFilename: "[name].[contenthash:8].css",
+        }),
+        new htmlWebpackPlugin({
+            template: path.resolve(__dirname, "public", "index.html"),
+            favicon: "./public/img/favicon.ico",
+        }),
+        new CleanWebpackPlugin(),
         new SentryWebpackPlugin({
             // sentry-cli configuration
             authToken: process.env.SENTRY_AUTH_TOKEN,
@@ -107,10 +107,5 @@ module.exports = {
             include: "./dist",
             ignore: ["node_modules", "webpack.config.js"],
         }),
-        ],
-    },
-    devServer: {
-        historyApiFallback: true,
-        port: 9000
-    },
+    ],
 };
