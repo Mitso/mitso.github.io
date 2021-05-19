@@ -1,0 +1,29 @@
+{
+    "root": true,
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "./.eslintrc.pr.json",
+        "./.eslintrc.mocha.json",
+        "./.eslintrc.vue.json"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1,
+                "ArrayExpression": "first"
+            }
+        ]
+    }
+}
+
