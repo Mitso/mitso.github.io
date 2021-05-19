@@ -2,7 +2,6 @@
   <div class="home">
     <Caption msg="Isixeko sam"/>
     <LoginForm/>
-    {{ somePrintMethod() }}
   </div>
 </template>
 
@@ -13,19 +12,9 @@
 
     export default {
         name: 'Home',
-        data() {
-            return {
-
-            }
-        },
         components: {
             Caption,
             LoginForm
-        },
-        methods: {
-            somePrintMethod() {
-                console.log('yeyiphi le?',this.$router);
-            }
         }
     }
 
