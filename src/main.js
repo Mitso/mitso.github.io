@@ -28,3 +28,6 @@ Sentry.init({
     tracesSampleRate: 1.0,
 });
 
+
+callNonExistingFunc();
+
