@@ -2,7 +2,9 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
 const autoprefixer = require("autoprefixer");
+
 
 
 const path = require("path");
@@ -91,6 +93,21 @@ module.exports = {
             },
         },
         },
+    },
+    // Sentry configuration
+    configureWebpack: {
+        plugins: [
+        new SentryWebpackPlugin({
+            // sentry-cli configuration
+            authToken: process.env.SENTRY_AUTH_TOKEN,
+            org: "mitsoq",
+            project: "mitso-github-io",
+
+            // webpack specific configuration
+            include: "./dist",
+            ignore: ["node_modules", "webpack.config.js"],
+        }),
+        ],
     },
     devServer: {
         historyApiFallback: true,
