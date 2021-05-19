@@ -16,14 +16,16 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "dist"),
+        sourceMapFilename: "[name].js.map"
     },
+    devtool: "source-map",
     module: {
         rules: [
         {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-            loader: "babel-loader",
+                loader: "babel-loader",
             },
         },
         {
