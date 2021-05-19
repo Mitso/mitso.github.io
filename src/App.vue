@@ -11,6 +11,16 @@
         name: 'App',
         components: {
             Nav
+        },
+        data() {
+            return {
+                name: ''
+            }
+        },
+        computed: {
+            someRandomDataPrint() {
+                return this.NotCreatedDataProperty
+            }
         }
     }
 </script>
