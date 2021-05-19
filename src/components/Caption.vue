@@ -23,22 +23,21 @@
     }
 </script>
 
-<style scoped>
+<style>
     .caption {
         margin: 0 auto;
         text-align: center;
         width: 800px;
-        &__inner {
-            position: relative;
-        }
     }
-    .heading {
-        &-primary {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 46px;
-        }
-        &--macro {
-            padding: 0 5%;
-        }
+    .caption__inner {
+        position: relative;
+    }
+
+    .heading-primary {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 46px;
+    }
+    .heading--macro {
+        padding: 0 5%;
     }
 </style>

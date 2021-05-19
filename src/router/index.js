@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Pages/Home.vue'
+import Home from '../views/Pages/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +18,7 @@ const routes = [
         this generates a separate chunk (about.[hash].js) for this route
         which is lazy-loaded when the route is visited.
     */
-    component: () => import(/* webpackChunkName: "about" */ '@/views/Pages/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Pages/About.vue')
   },
   {
     path: '/register',
@@ -28,7 +28,7 @@ const routes = [
         this generates a separate chunk (about.[hash].js) for this route
         which is lazy-loaded when the route is visited.
     */
-    component: () => import(/* webpackChunkName: "about" */ '@/components/Profile-CTA/Register.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/Profile-CTA/Register.vue')
   }
 ]
 

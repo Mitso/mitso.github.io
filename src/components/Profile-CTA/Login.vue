@@ -32,35 +32,33 @@
     .profile {
         width: 800px;
         margin: 0 auto;
-        &-fieldset {
-            border-width: 1px;
-            border-radius: 5px;
-            border-color: gray;
-            margin: 0 0 40px;
-            &__group {
-                align-items: center;
-                display: flex;
-                align-content: center;
-            }
-        }
-        &-label {
-            padding: 0 10px 0;
-            width: 100px;
-        }
-        &-input {
-            padding: 8px 10px
-        }
-        &-submit {
-            padding: 10px 15px;
-            width: 200px;
-        }
+    }
+    .profile-fieldset {
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: gray;
+        margin: 0 0 40px;
+    }
+    .profile-fieldset__group {
+        align-items: center;
+        display: flex;
+        align-content: center;
+    }
+    .profile-label {
+        padding: 0 10px 0;
+        width: 100px;
+    }
+    .profile-input {
+        padding: 8px 10px
+    }
+    .profile-submit {
+        padding: 10px 15px;
+        width: 200px;
     }
     legend {
         text-align: left;
     }
-    .cta-text {
-        &--standard {
-            color: gray;
-        }
+    .cta-text--standard {
+        color: gray;
     }
 </style>
