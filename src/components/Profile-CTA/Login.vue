@@ -28,7 +28,7 @@
     </div>
 </template>
 
-<style lang="scss">
+<style>
     .profile {
         width: 800px;
         margin: 0 auto;

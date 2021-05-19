@@ -7,7 +7,7 @@
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 /*
     Reusable global sass variables, mixins, functions etc.
 */

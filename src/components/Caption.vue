@@ -23,7 +23,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     .caption {
         margin: 0 auto;
         text-align: center;
