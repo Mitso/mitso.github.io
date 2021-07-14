@@ -12,7 +12,6 @@
     "cli_build": "vue-cli-service build",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "deploy": "sh deploy.sh",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development"
   },
