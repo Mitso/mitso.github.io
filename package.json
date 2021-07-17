@@ -7,7 +7,7 @@
     "test": "./node_modules/.bin/mocha --reporter spec",
     "dev": "npx webpack serve --config src/build/webpack.client.js",
     "build": "webpack --config src/build/webpack.client.js",
-    "server": "node serve.js",
+    "serve": "node serve.js",
     "cy": "./node_modules/.bin/cypress open"
   },
   "keywords": [
