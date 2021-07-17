@@ -8,6 +8,7 @@
     "dev": "npx webpack serve --config src/build/webpack.client.js",
     "build": "webpack --config src/build/webpack.client.js",
     "serve": "node serve.js",
+    "deploy": "sh deploy.sh",
     "cy": "./node_modules/.bin/cypress open"
   },
   "keywords": [
