@@ -15,7 +15,7 @@ module.exports = {
         index: "./src/index.js",
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "docs"),
         sourceMapFilename: "[name].js.map"
     },
     devtool: "source-map",
