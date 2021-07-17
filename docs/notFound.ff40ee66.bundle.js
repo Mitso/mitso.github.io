@@ -1,2 +1,0 @@
-(self.webpackChunkmitso_github_io=self.webpackChunkmitso_github_io||[]).push([[449],{1976:(e,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>u});const u=(0,n(1900).Z)({name:"Notfound"},(function(){var e=this;e.$createElement;return e._self._c,e._m(0)}),[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("Page not found")])])}],!1,null,null,null).exports}}]);
-//# sourceMappingURL=notFound.ff40ee66.js.map
