@@ -28,6 +28,13 @@ Sentry.init({
     tracesSampleRate: 1.0,
 });
 
+const dataLayer = [];
+const pageTracker = ({action}) => {
+    return {
+        event: action
+    }
+}
+dataLayer.push(pageTracker('route'))
 
-callNonExistingFunc();
+console.log(pageTracker('route'))
 
