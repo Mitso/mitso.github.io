@@ -1,0 +1,1 @@
+console.log("Another src script: main.js");

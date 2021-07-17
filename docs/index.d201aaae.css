@@ -1,6 +1,0 @@
-.nav{padding:30px}.nav-list{margin:0;padding:0}.nav-list__item{display:inline-block;color:#2c3e50;font-weight:bold;padding:0 10px}router-link-exact-active{color:#42b983}
-.main{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-align:center;color:#2c3e50}
-.caption{margin:0 auto;text-align:center;width:800px}.caption__inner{position:relative}.heading-primary{font-family:"Gill Sans","Gill Sans MT",Calibri,"Trebuchet MS",sans-serif;font-size:46px}.heading--macro{padding:0 5%}
-.profile{width:800px;margin:0 auto}.profile-fieldset{border-width:1px;border-radius:5px;border-color:gray;margin:0 0 40px}.profile-fieldset__group{align-items:center;display:flex;align-content:center}.profile-label{padding:0 10px 0;width:100px}.profile-input{padding:8px 10px}.profile-submit{padding:10px 15px;width:200px}legend{text-align:left}.cta-text--standard{color:gray}
-
-/*# sourceMappingURL=index.js.map*/
