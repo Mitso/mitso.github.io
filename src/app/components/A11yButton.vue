@@ -26,13 +26,16 @@ export default {
         justify-content: center;
         padding: 5px;
         position: fixed;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         left: 0;
         top: 35%;
         width: 20px;
         z-index: 9999;
+        @media screen and (min-width: 768px) {
+            display: flex;
+        }
         &__label {
             font-weight: 400;
             font-size: 24px;

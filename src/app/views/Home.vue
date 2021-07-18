@@ -47,22 +47,35 @@ export default {
 <style lang="scss">
     .home {
         background-color: $vLightGray;
-        padding: 15% 15% 0;
+        padding: 25% 5% 0;
         height: 100vh;
         width: auto;
+        @media screen and (min-width: 768px) {
+            padding: 15% 15% 0;
+        }
         &__intro {
             display: flex;
+            flex-direction: row;
             justify-content: space-around;
             overflow: hidden;
             position: relative;
+            @media screen and (min-width: 768px) {
+                flex-direction: column;
+            }
             &-left {
-               width: 50%;
+                width: auto;
+                @media screen and (min-width: 768px) {
+                    width: 50%;
+                }
             }
             &-right {
                 align-self: flex-end;
                 overflow: hidden;
                 position: relative;
-                width: 50%;
+                width: auto;
+                @media screen and (min-width: 768px) {
+                    width: 50%;
+                }
             }
         }
     }
@@ -90,8 +103,11 @@ export default {
 
     .heading {
         color: $vDarkGray;
-        font-size: 55px;
+        font-size: 45px;
         padding: 0 0 1em;
+        @media screen and (min-width: 768px) {
+            font-size: 55px;
+        }
     }
     .subtitle {
         color: $vDarkGray;

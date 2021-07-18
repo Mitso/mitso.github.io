@@ -107,7 +107,9 @@ export default {
         padding: 20px 10px;
         transform: opacity 1s;
         text-align: center;
-        width: 300px;
+        @media screen and (min-width: 768px) {
+            width: 300px;
+        }
         &:hover {
             opacity: 0.8;
         }
@@ -116,7 +118,12 @@ export default {
     .input-group {
         align-items: center;
         display: flex;
+        flex-direction: column;
         margin: 10px 0;
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+            width: 300px;
+        }
     }
 
     .submission {
