@@ -45,9 +45,4 @@ export default {
 		width: 100%;
         padding: 100px 0 0;
     }
-
-    .heading {
-        color: #fff;
-        font-size: 18px;
-    }
 </style>

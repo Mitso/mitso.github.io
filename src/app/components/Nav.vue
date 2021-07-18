@@ -43,12 +43,13 @@
 <style lang="scss">
     //DESKTOP
     .navigation {
-        background: #000;
-        position: fixed; //On scroll position - change style
+        background: $grayYellow;
         margin: 0 auto;
         padding: 20px 10%;
-        top: 0;
         left: 0;
+        position: fixed;
+        text-align: center;
+        top: 0;
         right: 0;
         z-index: 9999;
     }
@@ -59,9 +60,10 @@
             margin: 5px 10px;
         }
         &__anchor {
-            color: $white;
-            font-size: 17px;
+            color: $vDarkGray;
+            font-size: 18px;
             padding: 5px;
+            font-weight: 500;
         }
     }
 </style>

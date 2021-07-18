@@ -46,7 +46,7 @@ export default {
     body {
         color: $white;
         font-family: 'Source Sans Pro', sans-serif;
-        font-weight: 200;
+        font-weight: 400;
         font-size: 16px;
 
     }
@@ -65,20 +65,7 @@ export default {
         margin: 0;
     }
 
-    /*------------------------ CLASSES ------------------------*/
-
-    .heading {
-        color: $white;
-        font-size: 55px;
-        &--micro {
-            font-size: 18px;
-        }
-    }
-
-    .main {
-        margin: 0 auto;
-        position: relative;
-        overflow: auto;
-        height: 100%;
+    .clear {
+        display: block;
     }
 </style>

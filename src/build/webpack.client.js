@@ -24,7 +24,8 @@ const config = merge(webpackShared, {
         }),
         new htmlWebpackPlugin({
             template: path.resolve(__dirname, "/src/public", "index.html"),
-            favicon: "./src/public/favicon.ico"
+            favicon: "./src/public/favicon.ico",
+            title: "Isixeko sam"
         }),
         new StyleLintPlugin({
             files: ["**/*.{css,sss,scss,sass}"],
