@@ -98,7 +98,10 @@ export default {
     }
 
     .caption {
-        padding: 0 5em 0 0;
+        padding: 0 1em;
+        @media screen and (min-width: 768px) {
+             padding: 0 5em 0 0;
+        }
     }
 
     .heading {

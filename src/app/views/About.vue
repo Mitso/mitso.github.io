@@ -61,7 +61,7 @@ export default {
     .about {
         background-color: $vLightGray;
         height: 100vh;
-        padding: 5% 5% 0;
+        padding: 25% 5% 0;
         @media screen and (min-width: 768px) {
             padding: 5% 15% 0;
         }
