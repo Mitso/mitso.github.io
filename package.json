@@ -17,8 +17,7 @@
   "author": "Mitso Qalaba",
   "license": "ISC",
   "dependencies": {
-    "@gtm-support/vue-gtm": "^1.1.0",
-    "@gtm-support/vue2-gtm": "^1.1.0",
+    "@gtm-support/vue2-gtm": "1.1.0",
     "axios": "^0.21.1",
     "connect-history-api-fallback": "^1.6.0",
     "dotenv": "^10.0.0",
