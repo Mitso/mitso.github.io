@@ -40,7 +40,6 @@ export default {
         margin: 0;
         height: 100%;
         position: relative;
-        overflow:hidden;
     }
 
     body {
