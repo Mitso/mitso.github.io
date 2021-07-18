@@ -56,7 +56,7 @@ export default {
         target: "Profile",
         action: "Submit",
         "target-properties": "Register",
-        value: "send",
+        value: "sending",
       });
     }
   },
