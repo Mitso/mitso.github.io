@@ -52,10 +52,11 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$gtm.trackEvent("event", "regSubmit-click", {
-        target: "Profile",
+      this.$gtm.trackEvent({
+        event: "regSubmit-click",
+        category: "Profile",
         action: "Submit",
-        "target-properties": "Register",
+        label: "Register",
         value: "sending",
       });
     }
