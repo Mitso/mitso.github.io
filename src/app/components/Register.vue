@@ -3,6 +3,7 @@
     <form
       id="registerForm"
       class="form"
+      @submit.prevent="onSubmit()"
     >
       <fieldset>
         <legend>Ngena kwi-account yam:</legend>
@@ -42,6 +43,28 @@
   </div>
 </template>
 
+<script>
+
+export default {
+  name: "Register",
+  mounted() {
+    this.$gtm.trackView("MyScreenName", "currentPath");
+  },
+  methods: {
+    onSubmit() {
+      this.$gtm.trackEvent({
+        event: "regSubmit-click",
+        category: "Profile",
+        action: "Submit",
+        label: "Register",
+        value: "send",
+      });
+    }
+  },
+};
+
+</script>
+
 <style lang="scss">
     form {
         position: relative;
@@ -74,14 +97,20 @@
     }
 
     .cta-button {
-        color: $white;
         background-color: $strongRed;
         border-radius: 10px;
         border: none;
+        color: $white;
+        cursor: pointer;
         font-size: 20px;
+        opacity: 1;
         padding: 20px 10px;
+        transform: opacity 1s;
         text-align: center;
         width: 300px;
+        &:hover {
+            opacity: 0.8;
+        }
     }
 
     .input-group {

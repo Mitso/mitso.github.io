@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { createGtm } from "vue-gtm";
+import { createGtm } from "@gtm-support/vue-gtm";
 import router from "./app/router";
 import store from "./app/store";
 import App from "./App.vue";
@@ -18,15 +18,15 @@ const app = new Vue({
     }
 });
 
-app.use(
+Vue.use(
     createGtm({
         id: "GTM-N3DL544",
-        queryParams: {
-            // Add url query string when load gtm.js with GTM ID (optional)
-            gtm_auth: "AB7cDEf3GHIjkl-MnOP8qr",
-            gtm_preview: "env-4",
-            gtm_cookies_win: "x",
-        },
+        defer: false,
+        enabled: true,
+        debug: true,
+        vueRouter: router,
+        vueStore: store
+
     })
 );
 
