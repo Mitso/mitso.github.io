@@ -52,8 +52,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.$gtm.trackEvent({
-        event: "regSubmit-click",
+      this.$gtm.trackEvent("event", "regSubmit-click", {
         category: "Profile",
         action: "Submit",
         label: "Register",
