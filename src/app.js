@@ -10,7 +10,7 @@ Vue.prototype.$appDescription = "Isixeko sam - masakhane, sizibuze ukuba njengom
 import "font-awesome/css/font-awesome.min.css";
 
 Vue.use(VueGtm, {
-    id: "GTM-N3DL544",
+    id: "GTM-TF5ZL2D",
     defer: false,
     enabled: true,
     debug: true,
