@@ -84,7 +84,9 @@ export default {
         color: $darkGray;
         font-size: 18px;
         margin: 0 10px 0 0;
-        width: 15%;
+        @media screen and (min-width: 768px) {
+            width: 15%;
+        }
     }
 
     input[type=text] {

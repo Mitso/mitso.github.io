@@ -55,12 +55,12 @@ export default {
         }
         &__intro {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: space-around;
             overflow: hidden;
             position: relative;
             @media screen and (min-width: 768px) {
-                flex-direction: column;
+                flex-direction: row;
             }
             &-left {
                 width: auto;
@@ -69,11 +69,11 @@ export default {
                 }
             }
             &-right {
-                align-self: flex-end;
                 overflow: hidden;
                 position: relative;
                 width: auto;
                 @media screen and (min-width: 768px) {
+                    align-self: flex-end;
                     width: 50%;
                 }
             }
