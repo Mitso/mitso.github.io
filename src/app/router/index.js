@@ -18,6 +18,13 @@ const routes = [
         }
     },
     {
+        path: "/activity-feed",
+        name: "ActivityFeed",
+        component: () => {
+            return import(/* webpackChunkName: "about" */ "../views/ActivityFeed.vue");
+        }
+    },
+    {
         path: "/404",
         name: "Notfound",
         component: () => {

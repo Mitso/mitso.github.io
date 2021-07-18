@@ -44,7 +44,7 @@ export default {
     }
 
     body {
-        color: $white;
+        color: #000;
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 400;
         font-size: 16px;
@@ -52,7 +52,6 @@ export default {
     }
 
     h1, h2, h3, h4, h5, h6 {
-        display: inline-block;
         margin: 0;
     }
 
