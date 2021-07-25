@@ -1,66 +1,73 @@
 <template>
-  <div class="form-wrapper">
-    <form
-      id="registerForm"
-      class="form"
-      @submit.prevent="onSubmit()"
-    >
-      <fieldset>
-        <legend>Ngena kwi-account yam:</legend>
-        <div class="input-group">
-          <label for="username">Ibizo lakho</label>
-          <input
-            id="username"
-            v-model="username"
-            type="text"
-          >
-        </div>
+    <div class="form-wrapper">
+        <form
+            id="registerForm"
+            class="form"
+            @submit.prevent="onSubmit()"
+        >
+            <div class="fieldset">
+                <div class="input-group">
+                    <label for="username">Igama obizwa ngalo</label>
+                    <input
+                        id="username"
+                        v-model="username"
+                        type="text"
+                    >
+                </div>
 
-        <div class="input-group">
-          <label for="fullname">Igama nefani</label>
-          <input
-            id="fullname"
-            v-model="fullname"
-            type="text"
-          >
-        </div>
+                <div class="input-group">
+                    <label for="fullname">Igama nefani</label>
+                    <input
+                        id="fullname"
+                        v-model="fullname"
+                        type="text"
+                    >
+                </div>
 
-        <div class="input-group">
-          <label for="clanName">Isiduko sakho</label>
-          <input
-            id="clanName"
-            v-model="clanName"
-            type="text"
-          >
-        </div>
-        <div class="submission">
-          <button class="cta-button cta-button-primary">
-            Thumela
-          </button>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+                <div class="input-group">
+                    <label for="clanName">Isiduko sakho</label>
+                    <input
+                        id="clanName"
+                        v-model="clanName"
+                        type="text"
+                    >
+                </div>
+                <div class="submission">
+                    <button class="cta-button cta-button-primary">
+                        Thumela
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
-
+import axios from "axios";
 export default {
-  name: "Register",
-  mounted() {
-    this.$gtm.trackView("MyScreenName", "currentPath");
-  },
-  methods: {
-    onSubmit() {
-      this.$gtm.trackEvent({
-        event: "regSubmit-click",
-        category: "Profile",
-        action: "Submit",
-        label: "Register",
-        value: "sending",
-      });
-    }
-  },
+    name: "Register",
+    data () {
+        return {
+            username: "",
+            fullname: "",
+            clanName:""
+        };
+    },
+    methods: {
+        async onSubmit() {
+            let regData = {
+                username: this.username,
+                fullname: this.fullname,
+                clan: this.clanName
+            };
+            axios.post("http://localhost:9200/api", regData)
+                .then((res) => {
+                    console.log("Route", this.$router.path);
+                    console.log("General response", res);
+                });
+
+        }
+    },
 };
 
 </script>
@@ -69,23 +76,15 @@ export default {
     form {
         position: relative;
     }
-    fieldset {
+    .fieldset {
         border: none;
     }
-
-    legend {
-        color: $vDarkGray;
-        font-size: 28px;
-        font-weight: 500;
-        padding: 0;
-    }
-
     label {
-        color: $darkGray;
+        color: $white;
         font-size: 18px;
         margin: 0 10px 0 0;
         @media screen and (min-width: 768px) {
-            width: 15%;
+            width: 20%;
         }
     }
 
@@ -109,6 +108,7 @@ export default {
         padding: 20px 10px;
         transform: opacity 1s;
         text-align: center;
+        width: 250px;
         @media screen and (min-width: 768px) {
             width: 300px;
         }
@@ -122,9 +122,10 @@ export default {
         display: flex;
         flex-direction: column;
         margin: 10px 0;
+        width: 300px;
         @media screen and (min-width: 768px) {
             flex-direction: row;
-            width: 300px;
+            width: auto;
         }
     }
 

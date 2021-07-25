@@ -1,16 +1,16 @@
 <template>
-  <div
-    :id="menuId"
-    class="a11y-4-menu"
-  >
-    <p class="a11y-4-menu__label">
-      &darr;
-    </p>
-  </div>
+    <div
+        :id="menuId"
+        class="a11y-4-menu"
+    >
+        <p class="a11y-4-menu__label">
+            &darr;
+        </p>
+    </div>
 </template>
 <script>
 export default {
-  name: "A11yButton"
+    name: "A11yButton"
 };
 </script>
 

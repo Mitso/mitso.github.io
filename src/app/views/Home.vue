@@ -1,56 +1,57 @@
 <template>
-  <div class="home">
-    <div class="home__intro">
-      <div class="home__intro-left">
-        <h1 class="heading heading--primary">
-          <span class="clear">Wamkelekile</span> kwi-website Isixeko
-          <span class="clear">sam</span>
-        </h1>
-        <div class="caption">
-          <h4 class="subtitle">
-            Isixeko sam website yakhiwe ngabantu abafuna ukukunxumanisa nesixeko sakho kunye noluntu kabanzi.
-          </h4>
+    <div class="home">
+        <div class="home__intro">
+            <div class="home__intro-left">
+                <h1 class="heading heading--primary">
+                    <span class="clear">Wamkelekile</span> kwi-website Isixeko
+                    <span class="clear">sam</span>
+                </h1>
+                <div class="caption">
+                    <h4 class="subtitle">
+                        Isixeko sam website yakhiwe ngabantu abafuna ukukunxumanisa nesixeko sakho kunye noluntu kabanzi.
+                    </h4>
+                </div>
+            </div>
+            <div class="home__intro-right">
+                <Register />
+            </div>
         </div>
-      </div>
-      <div class="home__intro-right">
-        <Register />
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import Register from "../components/Register.vue";
 
 export default {
-  name: "Home",
-  components: {
-    Register
-  },
-  data () {
-    return {
-      menuA11y: 1,
-      scrollTop: 0,
-      posts: []
-    };
-  },
-  computed: {
-    cssVars() {
-      return {
-        "height": `${this.scrollTop}px`
-      };
+    name: "Home",
+    components: {
+        Register
+    },
+    data () {
+        return {
+            menuA11y: 1,
+            scrollTop: 0,
+            posts: []
+        };
+    },
+    computed: {
+        cssVars() {
+            return {
+                "height": `${this.scrollTop}px`
+            };
+        }
     }
-  }
 };
 </script>
 
 <style lang="scss">
     .home {
-        background-color: $vLightGray;
+        background-color: $vDarkGray;
         padding: 25% 5% 0;
-        height: 100vh;
+        height: auto;
         width: auto;
         @media screen and (min-width: 768px) {
+            height: 100vh;
             padding: 15% 15% 0;
         }
         &__intro {
@@ -105,7 +106,7 @@ export default {
     }
 
     .heading {
-        color: $vDarkGray;
+        color: $white;
         font-size: 45px;
         padding: 0 0 1em;
         @media screen and (min-width: 768px) {
@@ -113,7 +114,7 @@ export default {
         }
     }
     .subtitle {
-        color: $vDarkGray;
+        color: $white;
         font-size: 22px;
         font-weight: 300;
     }

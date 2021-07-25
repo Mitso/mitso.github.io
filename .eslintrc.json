@@ -19,7 +19,7 @@
         "semi": ["warn", "always"],
         "quotes": ["warn", "double"],
         "indent": ["off"],
-        "vue/script-indent": ["warn", 2],
-        "vue/html-indent": ["warn", 2   ]
+        "vue/script-indent": ["warn", 4],
+        "vue/html-indent": ["warn", 4]
     }
 }

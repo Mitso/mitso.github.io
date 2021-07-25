@@ -1,12 +1,12 @@
 <template>
-  <div class="layout">
+    <div class="layout">
     <!-- NEED SLOTS HERE -->
-  </div>
+    </div>
 </template>
 
 <script>
 export default {
-  name: "Layout",
+    name: "Layout",
 };
 </script>
 

@@ -13,26 +13,26 @@
             b) Publish content
 -->
 <template>
-  <div class="navigation">
-    <ul class="menu">
-      <li class="menu__item">
-        <router-link
-          to="/"
-          class="menu__anchor"
-        >
-          Home
-        </router-link>
-      </li>
-      <li class="menu__item">
-        <router-link
-          to="/about"
-          class="menu__anchor"
-        >
-          About
-        </router-link>
-      </li>
-    </ul>
-  </div>
+    <div class="navigation">
+        <ul class="menu">
+            <li class="menu__item">
+                <router-link
+                    to="/"
+                    class="menu__anchor"
+                >
+                    Home
+                </router-link>
+            </li>
+            <li class="menu__item">
+                <router-link
+                    to="/about"
+                    class="menu__anchor"
+                >
+                    About
+                </router-link>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -43,7 +43,7 @@
 <style lang="scss">
     //DESKTOP
     .navigation {
-        background: $grayYellow;
+        background: $vDarkBlue;
         margin: 0 auto;
         padding: 20px 10%;
         left: 0;
@@ -60,7 +60,7 @@
             margin: 5px 10px;
         }
         &__anchor {
-            color: $vDarkGray;
+            color: $white;
             font-size: 18px;
             padding: 5px;
             font-weight: 500;

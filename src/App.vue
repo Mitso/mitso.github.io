@@ -1,12 +1,12 @@
 <template>
-  <main
-    class="main"
-    role="main"
-  >
-    <Nav />
-    <A11yButton />
-    <router-view />
-  </main>
+    <main
+        class="main"
+        role="main"
+    >
+        <Nav />
+        <A11yButton />
+        <router-view />
+    </main>
 </template>
 
 
@@ -15,19 +15,19 @@ import Nav from "./app/components/Nav";
 import A11yButton from "./app/components/A11yButton";
 
 export default {
-  name:"App",
-  components: {
-    Nav,
-    A11yButton
-  },
-  data() {
-    return {
+    name:"App",
+    components: {
+        Nav,
+        A11yButton
+    },
+    data() {
+        return {
 
-    };
-  },
-  mounted() {
-    this.$store.dispatch("GET_RANDOM");
-  }
+        };
+    },
+    mounted() {
+        this.$store.dispatch("GET_RANDOM");
+    }
 };
 
 </script>
