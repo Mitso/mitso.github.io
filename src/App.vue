@@ -43,7 +43,7 @@ export default {
     }
 
     body {
-        color: #000;
+        color: $white;
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 400;
         font-size: 16px;

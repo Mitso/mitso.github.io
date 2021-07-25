@@ -5,9 +5,14 @@
                 <h2 class="heading heading--secondary">
                     Profile yam
                 </h2>
-                <p class="profile__fullname">
-                    Igama lam:
-                </p>
+                {{ fullName }}
+                <!-- <p
+                    :key="index"
+                    :for="(index, item) in fullName"
+                    class="profile__fullname"
+                >
+                    Igama lam: {{ item }}
+                </p> -->
                 <p class="profile__location">
                     I-location yam:
                 </p>
@@ -35,6 +40,36 @@
         </div>
     </div>
 </template>
+
+<script>
+import {mapGetters, mapActions} from "vuex";
+
+export default {
+    name: "ActivityFeed",
+    data () {
+        return {
+            regUser: null
+        };
+    },
+    computed: {
+        ...mapGetters([
+            "userReg"
+        ]),
+        fullName() {
+            return this.$store.getters.userReg;
+        }
+    },
+    mounted () {
+        console.log("FEED:", this.fullName);
+    },
+    methods: {
+        ...mapActions({
+            getUser: "GET_USER"
+        })
+    }
+};
+
+</script>
 
 <style lang="scss">
     .activity-wrapper {

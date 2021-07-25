@@ -1,5 +1,6 @@
 const state = {
-    objData: null
+    objData: null,
+    user: null
 };
 
 export default state;

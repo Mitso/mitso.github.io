@@ -1,3 +1,4 @@
+import axios from "axios";
 import getData from "../api";
 
 const actions = {
@@ -5,7 +6,16 @@ const actions = {
         getData()
             .then(response => {
                 commit("SET_RANDOM", response.data);
-            }).catch(err => `An error ${err} was encountred` );
+            }).catch(err => `An error ${err} was encounted` );
+    },
+    GET_USER: ({commit}) => {
+        axios.get("http://localhost:9200/users")
+            .then(res => {
+                commit("SET_USER", res.data);
+            })
+            .catch((error) => {
+                console.log(`An error ${error} was encounted`);
+            });
     }
 };
 

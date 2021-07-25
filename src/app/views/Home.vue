@@ -2,10 +2,15 @@
     <div class="home">
         <div class="home__intro">
             <div class="home__intro-left">
-                <h1 class="heading heading--primary">
-                    <span class="clear">Wamkelekile</span> kwi-website Isixeko
-                    <span class="clear">sam</span>
-                </h1>
+                <template v-if="registeredUser">
+                    {{ registeredUser }}
+                </template>
+                <template v-else>
+                    <h1 class="heading heading--primary">
+                        <span class="clear">Wamkelekile</span> kwi-website Isixeko
+                        <span class="clear">sam</span>
+                    </h1>
+                </template>
                 <div class="caption">
                     <h4 class="subtitle">
                         Isixeko sam website yakhiwe ngabantu abafuna ukukunxumanisa nesixeko sakho kunye noluntu kabanzi.
@@ -21,6 +26,7 @@
 
 <script>
 import Register from "../components/Register.vue";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
     name: "Home",
@@ -35,11 +41,25 @@ export default {
         };
     },
     computed: {
+        ...mapGetters([
+            "userReg"
+        ]),
+        registeredUser() {
+            return this.userReg;
+        },
         cssVars() {
             return {
                 "height": `${this.scrollTop}px`
             };
         }
+    },
+    mounted () {
+        console.log("HOME:", this.$store.getters.userReg);
+    },
+    methods: {
+        ...mapActions({
+            getUser: "GET_USER"
+        })
     }
 };
 </script>

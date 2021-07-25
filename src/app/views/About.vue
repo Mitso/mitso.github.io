@@ -46,13 +46,13 @@ export default {
         };
     },
     computed: {
-    ...mapGetters([
-      "getRandom"
-    ]),
-    getCannabis () {
-        return this.$store.getters.getRandom;
-        //return this.getRandom;
-    }
+        ...mapGetters([
+            "getRandom"
+        ]),
+        getCannabis () {
+            return this.$store.getters.getRandom;
+            //return this.getRandom;
+        }
     }
 };
 </script>

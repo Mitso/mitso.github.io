@@ -62,10 +62,12 @@ export default {
             };
             axios.post("http://localhost:9200/api", regData)
                 .then((res) => {
-                    console.log("Route", this.$router.path);
-                    console.log("General response", res);
+                    if (res.status == 200)
+                        this.$router.push({ path: "/activity-feed" });
+                })
+                .catch((error) => {
+                    console.log(`${error}`);
                 });
-
         }
     },
 };
