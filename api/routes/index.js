@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/api", (req, res) => {
     res.send(
         [{
             title: "Hello!",
@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     );
 });
 
-router.post("/api", (req, res) => {
+router.post("/signup", (req, res) => {
     if (!req.body.phone) {
         return res.status(400).json({
             status: "error",

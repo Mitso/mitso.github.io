@@ -10,7 +10,7 @@ const SCSSLoader = {
             options: {
                 //prependData
                 additionalData: `
-                    @import "src/app/assets/styles/util/_variables.scss";
+                    @import "src/client/assets/styles/util/_variables.scss";
                 `
             }
         }

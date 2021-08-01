@@ -18,7 +18,7 @@ const config = {
         extensions: [ ".js", ".vue", ".json"],
         alias: {
             "vue$": isDev ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js", //To test on vue file
-            "@":  path.resolve(__dirname, "/app")
+            "@":  path.resolve(__dirname, "/client")
         }
     },
     module: {

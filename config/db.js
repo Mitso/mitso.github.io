@@ -11,9 +11,7 @@ async function main() {
 
     try {
         await client.connect();
-
         await listDatabases(client);
-
     } catch (e) {
         console.error(e);
     } finally {
@@ -22,7 +20,6 @@ async function main() {
 }
 
 main().catch(console.error);
-
 
 async function listDatabases(client) {
     const databasesList = await client.db().admin().listDatabases();

@@ -67,7 +67,7 @@ export default {
                 phone: this.phone,
                 clan: this.clanName
             };
-            axios.post("http://localhost:9200/api", regData)
+            axios.post("http://localhost:9200/signup", regData)
                 .then((res) => {
                     if (res.status == 200)
                         this.$router.push({ path: "/activity-feed" });

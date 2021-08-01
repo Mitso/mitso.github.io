@@ -11,8 +11,8 @@
 
 
 <script>
-import Nav from "./app/components/Nav";
-import A11yButton from "./app/components/A11yButton";
+import Nav from "./client/components/Nav";
+import A11yButton from "./client/components/A11yButton";
 
 export default {
     name:"App",
