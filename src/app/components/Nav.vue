@@ -14,24 +14,42 @@
 -->
 <template>
     <div class="navigation">
-        <ul class="menu">
-            <li class="menu__item">
-                <router-link
-                    to="/"
-                    class="menu__anchor"
-                >
-                    Home
-                </router-link>
-            </li>
-            <li class="menu__item">
-                <router-link
-                    to="/about"
-                    class="menu__anchor"
-                >
-                    About
-                </router-link>
-            </li>
-        </ul>
+        <div
+            class="languages"
+        >
+            <ul class="languages-list">
+                <li class="languages-list__item">
+                    <a class="languages-list__anchor">
+                        Xhosa
+                    </a>
+                </li>
+                <li class="languages-list__item">
+                    <a class="languages-list__anchor">
+                        English
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <nav>
+            <ul class="menu">
+                <li class="menu__item">
+                    <router-link
+                        to="/"
+                        class="menu__anchor"
+                    >
+                        Home
+                    </router-link>
+                </li>
+                <li class="menu__item">
+                    <router-link
+                        to="/about"
+                        class="menu__anchor"
+                    >
+                        About
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
 
@@ -52,6 +70,10 @@
         top: 0;
         right: 0;
         z-index: 9999;
+
+        align-items: center;
+        display: flex;
+        justify-content: center;
     }
     .menu {
         display: inline-block;
@@ -64,6 +86,28 @@
             font-size: 18px;
             padding: 5px;
             font-weight: 500;
+        }
+    }
+
+
+    .languages {
+        height: 33px;
+        overflow: hidden;
+        width: 100px;
+        @media screen and (min-width: 768px) {
+           left: 1em;
+           position: absolute;
+        }
+        &-list {
+            list-style: none;
+            &__item {
+                display: block;
+                margin: 5px 10px;
+            }
+            &__anchor {
+                color: #fff;
+                font-size: 18px;
+            }
         }
     }
 </style>

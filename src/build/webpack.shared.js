@@ -24,7 +24,7 @@ const config = {
     module: {
         rules: [
             require("./loaders/vue.loader"),
-            require("./loaders/loader"),
+            require("./loaders/loader.js"),
             require("./loaders/css.loader"),
             require("./loaders/scss.loader"),
             require("./loaders/asset.loader"),

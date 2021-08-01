@@ -1,5 +1,7 @@
 <template>
-    <div class="home">
+    <div
+        class="home"
+    >
         <div class="home__intro">
             <div class="home__intro-left">
                 <template v-if="registeredUser">
@@ -27,7 +29,6 @@
 <script>
 import Register from "../components/Register.vue";
 import {mapGetters, mapActions} from "vuex";
-
 export default {
     name: "Home",
     components: {

@@ -8,6 +8,9 @@
             <div class="fieldset">
                 <div class="input-group">
                     <label for="username">Igama obizwa ngalo</label>
+                    <p class="input-hint">
+                        Igama alinyanzelekiswanga
+                    </p>
                     <input
                         id="username"
                         v-model="username"
@@ -16,11 +19,15 @@
                 </div>
 
                 <div class="input-group">
-                    <label for="fullname">Igama nefani</label>
+                    <label for="phone">Ifowuni yakho</label>
+                    <span class="input-requireHint">Linyanzekelekile</span>
+                    <p class="input-hint">
+                        Ukwemzela uzokwazi ukwazisa abantu ngemiyalezo onayo
+                    </p>
                     <input
-                        id="fullname"
-                        v-model="fullname"
-                        type="text"
+                        id="phone"
+                        v-model="phone"
+                        type="tel"
                     >
                 </div>
 
@@ -49,7 +56,7 @@ export default {
     data () {
         return {
             username: "",
-            fullname: "",
+            phone: "",
             clanName:""
         };
     },
@@ -57,7 +64,7 @@ export default {
         async onSubmit() {
             let regData = {
                 username: this.username,
-                fullname: this.fullname,
+                phone: this.phone,
                 clan: this.clanName
             };
             axios.post("http://localhost:9200/api", regData)
@@ -83,17 +90,16 @@ export default {
     }
     label {
         color: $white;
+        display: inline-block;
         font-size: 18px;
-        margin: 0 10px 0 0;
-        @media screen and (min-width: 768px) {
-            width: 20%;
-        }
     }
 
-    input[type=text] {
+    input[type=text],
+    input[type=tel] {
         box-shadow: 1px 1px 6px 0 $cyanGray;
         border: none;
         border-radius: 5px;
+        display: block;
         padding: 15px 10px;
         width: 70%;
         font-size: 16px;
@@ -119,15 +125,16 @@ export default {
         }
     }
 
-    .input-group {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        margin: 10px 0;
-        width: 300px;
-        @media screen and (min-width: 768px) {
-            flex-direction: row;
-            width: auto;
+    .input {
+        &-group {
+            margin: 10px 0 2em;
+        }
+        &-hint {
+            font-size: 16px;
+            font-style: italic;
+        }
+        &-requireHint {
+            font-size: 12px;
         }
     }
 

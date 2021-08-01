@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/api", (req, res) => {
-    if (!req.body.fullname) {
+    if (!req.body.phone) {
         return res.status(400).json({
             status: "error",
             error: "req body cannot be empty",
