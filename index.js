@@ -14,11 +14,6 @@ const port = process.env.PORT;
 const staticFileMiddleware = express.static(`${__dirname}/dist`);
 app.use(staticFileMiddleware);
 
-app.use(history({
-    disableDotRule: true,
-    verbose: true
-}));
-
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -58,6 +53,12 @@ app.get("/users", (req, res) => {
         ]
     );
 });
+
+
+app.use(history({
+    disableDotRule: true,
+    verbose: true
+}));
 
 app.listen(port, () => {
     console.log(`API Express webserver listening to ${port}`);
