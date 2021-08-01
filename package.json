@@ -4,10 +4,11 @@
   "description": "Isixeko-sam 1 (vue, webpack, node etc.)",
   "private": true,
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
     "dev": "npx webpack serve --config src/build/webpack.client.js",
     "build": "webpack --config src/build/webpack.client.js",
     "server": "node server.js",
+    "db": "node ./config/db.js",
+    "start": "./node_modules/nodemon/bin/nodemon.js server.js",
     "deploy": "sh deploy.sh",
     "cy": "./node_modules/.bin/cypress open"
   },
@@ -27,6 +28,7 @@
     "gsap": "^3.7.0",
     "lodash": "^4.17.21",
     "mongodb": "^4.0.1",
+    "morgan": "^1.10.0",
     "regenerator-runtime": "^0.13.7",
     "vue": "2.6.13",
     "vue-router": "^3.5.1",
@@ -59,6 +61,7 @@
     "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^1.6.2",
     "node-sass": "^6.0.0",
+    "nodemon": "^2.0.12",
     "optimize-css-assets-webpack-plugin": "^6.0.0",
     "sass-loader": "^11.1.1",
     "sass-resources-loader": "^2.2.1",
