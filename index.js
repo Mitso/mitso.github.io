@@ -5,7 +5,9 @@ const express = require("express"),
     history = require("connect-history-api-fallback"),
     mongoose = require("mongoose"),
     morgan = require("morgan"),
-    config = require("./config/db");
+    config = require("./config/db"),
+    router = express.Router(),
+    userController = require("./api/controller");
 
 dotenv.config();
 
@@ -20,6 +22,17 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
+//DEFINE DB
+mongoose.set("useCreateIndex", true);
+mongoose.connect(config.database, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then((client) => {
+    console.log("MongoDB Connected…", client);
+  })
+  .catch(err => console.log(err));
 
 //DEFINE ROUTES
 app.get("/api", (req, res) => {
@@ -37,7 +50,7 @@ app.post("/signup", (req, res) => {
             error: "req body cannot be empty",
         });
     }
-
+    userController.registerNewUser;
     res.status(200).json({
         data: req.body
     });
@@ -53,7 +66,6 @@ app.get("/users", (req, res) => {
         ]
     );
 });
-
 
 app.use(history({
     disableDotRule: true,
