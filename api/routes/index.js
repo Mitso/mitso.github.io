@@ -1,4 +1,3 @@
-//Routes
 const express = require("express");
 const router = express.Router();
 
@@ -25,7 +24,6 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/users", (req, res) => {
-    //Needs to get record from DB
     res.send(
         [
             {

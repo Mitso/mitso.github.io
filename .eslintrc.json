@@ -17,7 +17,6 @@
     "extends": ["plugin:vue/vue3-recommended", "eslint:recommended"],
     "rules": {
         "semi": ["warn", "always"],
-        "quotes": ["warn", "double"],
         "indent": ["off"],
         "vue/script-indent": ["warn", 4],
         "vue/html-indent": ["warn", 4]

@@ -54,9 +54,6 @@ export default {
             };
         }
     },
-    mounted () {
-        console.log("HOME:", this.$store.getters.userReg);
-    },
     methods: {
         ...mapActions({
             getUser: "GET_USER"

@@ -7,10 +7,8 @@ const { merge } = require("webpack-merge");
 const path = require("path");
 require("babel-polyfill");
 
-const isDev = process.env.NODE_ENV;
-
 const config = merge(webpackShared, {
-    mode: isDev,
+    mode: process.env.NODE_ENV,
     entry: [
         "babel-polyfill",
         path.resolve(__dirname, "/src", "app.js")

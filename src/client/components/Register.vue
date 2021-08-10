@@ -27,7 +27,7 @@
                     <input
                         id="phone"
                         v-model="phone"
-                        type="tel"
+                        type="text"
                     >
                 </div>
 
@@ -67,13 +67,14 @@ export default {
                 phone: this.phone,
                 clan: this.clanName
             };
-            axios.post("http://localhost:9200/signup", regData)
+            axios.post("http://localhost:9000/signup", regData)
                 .then((res) => {
+                    console.log(res, regData);
                     if (res.status == 200)
                         this.$router.push({ path: "/activity-feed" });
                 })
                 .catch((error) => {
-                    console.log(`${error}`);
+                    console.log(`Record..${error}`);
                 });
         }
     },

@@ -9,7 +9,7 @@ const actions = {
             }).catch(err => `An error ${err} was encounted` );
     },
     GET_USER: ({commit}) => {
-        axios.get("http://localhost:9200/users")
+        axios.get("/users")
             .then(res => {
                 commit("SET_USER", res.data);
             })

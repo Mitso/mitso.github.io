@@ -3,9 +3,7 @@ const path = require("path");
 
 dotenv.config();
 
-const isDev = process.env.NODE_ENV;
-const isPort = process.env.PORT = 9100;
-
+const isPort =  process.env.PORT = 9100;
 const config = {
     name: "config",
     output: {
@@ -17,7 +15,7 @@ const config = {
     resolve: {
         extensions: [ ".js", ".vue", ".json"],
         alias: {
-            "vue$": isDev ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js", //To test on vue file
+            "vue$": process.env.PORT ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js", //To test on vue file
             "@":  path.resolve(__dirname, "/client")
         }
     },
@@ -50,6 +48,7 @@ const config = {
         }
     },
     devServer: {
+        historyApiFallback: true,
         contentBase: path.join(__dirname, "../../dist"),
         compress: true,
         port: isPort,
