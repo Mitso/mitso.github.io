@@ -1,21 +1,14 @@
-const { User } = require('../models');
+const User = require('../models');
 
-exports.registerNewUser = async (req, res) => {
-    try {
-        if (!req.body.phone) {
-            return res.status(400).json({
-                status: "error",
-                error: "req body cannot be empty",
-            });
-        }
-        const user = new User({
-            username: req.body.username,
-            phone: req.body.phone,
-            clan: req.body.clan
+module.exports =  {
+    listUsers: function (req, res) {
+        res.render('user-form');
+    },
+    createUserEntry: function(req, res) {
+        let inputs = req.body;
+        User.createEntry(inputs, function(data) {
+            res.render('user-form');
+            console.log(('Record was created', data));
         });
-        res.status(201).json(user);
     }
-    catch (err) {
-        res.status(400).json({err: err});
-    }
-};
+}

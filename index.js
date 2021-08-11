@@ -5,7 +5,8 @@ const express = require("express"),
     mongoose = require("mongoose"),
     morgan = require("morgan"),
     config = require("./api/config/db"),
-    userController = require("./api/controllers");
+    routes = require("./api/routes");
+
 
 dotenv.config();
 
@@ -22,7 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-
+//ROUTES
+app.use("/api", routes);
 
 //DB
 mongoose.set("useCreateIndex", true);
@@ -36,33 +38,7 @@ mongoose.connect(config.database, {
   .catch(err => console.log(err));
 
 //ROUTES
-app.get("/api", (req, res) => {
-    res.send(
-        [{
-            title: "Hello!",
-            description: "You are connected to the API"
-        }]
-    );
-});
 
-app.post("/signup", (req, res) => {
-    console.log('Data', req.body.phone);
-    userController.registerNewUser;
-    res.status(200).json({
-        data: req.body
-    });
-});
-
-app.get("/users", (req, res) => {
-    res.send(
-        [
-            {
-                phone: "Hello!",
-
-            }
-        ]
-    );
-});
 
 app.use(history({
     disableDotRule: true,

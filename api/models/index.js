@@ -25,5 +25,13 @@ const userSchema = mongoose.Schema({
   ]
 });
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const User = mongoose.model("Usera", userSchema);
+module.exports =  {
+    createEntry: function(data, callback) {
+        let userData = new User(data);
+        userData.save(function(err, inputData) {
+            if (err) throw err;
+            return callback(inputData);
+        });
+    }
+};
