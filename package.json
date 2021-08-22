@@ -8,7 +8,6 @@
     "build": "webpack --config src/webpack/webpack.client.js",
     "api": "node index.js",
     "db": "node ./config/db.js",
-    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
     "deploy": "sh deploy.sh",
     "cy": "./node_modules/.bin/cypress open"
   },

@@ -9,7 +9,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, "../../dist"),
         publicPath: "/",
-        filename: "[name].[chunkhash:8].bundle.js",
+        filename: "[name].[chunkhash:8].js",
         sourceMapFilename: "[name].[chunkhash:8].js.map",
     },
     resolve: {
