@@ -9,7 +9,7 @@ const isPort = process.env.PORT = 9100;
 const config = {
     name: "config",
     output: {
-        path: path.resolve(__dirname, "../../dist"),
+        path: path.resolve(__dirname, "../dist"),
         publicPath: "/",
         filename: "[name].[chunkhash:8].bundle.js",
         sourceMapFilename: "[name].[chunkhash:8].js.map",
@@ -17,7 +17,8 @@ const config = {
     resolve: {
         extensions: [ ".js", ".vue", ".json"],
         alias: {
-            "vue$": isDev ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js", //To test on vue file
+            //To test on vue file
+            "vue$": isDev ? "vue/dist/vue.runtime.js" : "vue/dist/vue.runtime.min.js", 
             "@":  path.resolve(__dirname, "/app")
         }
     },
@@ -33,7 +34,7 @@ const config = {
                 enforce: "pre",
                 test: /\.(js|vue)$/,
                 loader: "eslint-loader",
-                exclude: /node_modules/
+                exclude: "/node_modules/"
             },
         ]
     },
@@ -50,7 +51,7 @@ const config = {
         }
     },
     devServer: {
-        contentBase: path.join(__dirname, "../../dist"),
+        contentBase: path.join(__dirname, "../dist"),
         compress: true,
         port: isPort,
     }

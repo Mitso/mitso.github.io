@@ -2,4 +2,4 @@
 
 TO DO
 
-    Build an RESTFULL API  endpoint that fetches & present data to the app?
+    Build an RESTFULL API  endpoint that fetches & present data to the app

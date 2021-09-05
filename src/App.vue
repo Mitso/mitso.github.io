@@ -4,7 +4,6 @@
         role="main"
     >
         <Nav />
-        <A11yButton />
         <router-view />
     </main>
 </template>
@@ -12,7 +11,6 @@
 
 <script>
 import Nav from "./app/components/Nav";
-import A11yButton from "./app/components/A11yButton";
 
 export default {
     name:"App",

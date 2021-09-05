@@ -15,7 +15,7 @@
                 </template>
                 <div class="caption">
                     <h4 class="subtitle">
-                        Isixeko sam website yakhiwe ngabantu abafuna ukukunxumanisa nesixeko sakho kunye noluntu kabanzi.
+                        Isixeko sam website yakhiwe ngabantu abafuna uku-kunxumanisa nesixeko sakho kunye noluntu kabanzi.
                     </h4>
                 </div>
             </div>
