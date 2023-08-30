@@ -12,6 +12,10 @@
     ],
     "plugins": [
         "@babel/plugin-syntax-dynamic-import",
-        "transform-regenerator"
+        "@babel/transform-regenerator",
+        ["@babel/plugin-transform-react-jsx", {
+            "runtime": "automatic"
+          }],
+        "@babel/transform-runtime"
     ]
 }

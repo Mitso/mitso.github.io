@@ -1,3 +1,0 @@
-{
-    "ignoreTestFiles": "./cypress/integration/2-advanced-examples/*.spec.js"
-}
