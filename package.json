@@ -1,43 +1,22 @@
 {
-  "name": "profiles-blog",
-  "version": "1.0.0",
+  "name": "vue3js-vite-app",
   "private": true,
-  "description": "Pull profiles from external API ",
-  "main": "index.js",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mitso/profiles-blog.git"
-  },
-  "keywords": [
-    "Next.js",
-    "App",
-    "App",
-    "Profiles",
-    "Blog"
-  ],
-  "author": "Mitso Qalaba",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mitso/profiles-blog/issues"
-  },
-  "homepage": "https://github.com/Mitso/profiles-blog#readme",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "core-js": "^3.32.1",
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.5.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.13.1",
-    "regenerator-runtime": "^0.14.0",
-    "sass": "^1.26.10",
-    "swr": "^0.3.0"
+    "vue": "^3.4.35",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.22.10"
+    "@vitejs/plugin-vue": "^5.1.2",
+    "sass-embedded": "^1.77.8",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0",
+    "vue-tsc": "^2.0.29"
   }
 }
