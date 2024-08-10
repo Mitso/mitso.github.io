@@ -5,4 +5,14 @@ This template should help get you started developing with Vue 3 and TypeScript i
 Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
 
 
-## Query the [Random User API ](https://randomuser.me/api/?results=50&seed=somethingfun)
+### Vue Ecosystem reources 
+
+[Vue intro](https://vuejs.org/guide/introduction.html)
+
+[Vue Router](https://router.vuejs.org/guide/)
+
+[Vue SSR](https://vuejs.org/guide/scaling-up/ssr)
+
+### Vite 
+
+[Vite build tool](https://vitejs.dev/guide/)
