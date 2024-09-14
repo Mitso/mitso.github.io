@@ -13,3 +13,10 @@
     </div>
   </section>
 </template>
+
+<style lang="scss">
+  .landing {
+    margin: 0 auto;
+    width: 50vw;
+  }
+</style>

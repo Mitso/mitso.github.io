@@ -2,9 +2,14 @@ import { createApp } from 'vue'
 import './assets/styles/css/style.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+/*
+    a) Vue instance 
+        - Argument is the single file component root template
+*/
+const rootComponentInstance = createApp(App)
 
-
+console.log(rootComponentInstance)
+rootComponentInstance.mount('#app')
 
 /*
     1. Create API server 
