@@ -17,7 +17,7 @@ async function submitSignupForm(e) {
         email_address: email.value //reactiveEmailInput.value
     }
 
-    const apiUri = 'http://localhost:8080/signup'
+    const apiUri = 'http://localhost:3000/signup'
     try {
         const response = await fetch(apiUri, {
             headers: {
@@ -26,6 +26,7 @@ async function submitSignupForm(e) {
             method: 'POST',
             body: JSON.stringify({...signupDataObject})
         })
+        console.log('Client request body:', response)
         if (response.statusText === 'OK') {
             reactiveIsFormSubmited.value = true
         }

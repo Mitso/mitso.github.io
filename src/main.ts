@@ -1,22 +1,10 @@
-import { createApp } from 'vue'
-import './assets/styles/css/style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import './assets/styles/css/style.css';
 
-/*
-    a) Vue instance 
-        - Argument is the single file component root template
-*/
-const rootComponentInstance = createApp(App)
+import router from '@/routes/index.js';
 
-console.log(rootComponentInstance)
-rootComponentInstance.mount('#app')
+import App from '@/App.vue';
 
-/*
-    1. Create API server 
-        API talks to databases statefull application 
-            Test DB e.g. REMOTE DB Firebase or LOCAL DB (any) ie. MongoDB, MySQL, Postgres, Mongoose or GraphQL?
-    2. Create a DB
-
-    Postgress Port No. 5432
-
-*/
+const rootComponentInstance = createApp(App);
+rootComponentInstance.use(router);
+rootComponentInstance.mount('#app');

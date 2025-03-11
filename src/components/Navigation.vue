@@ -1,11 +1,12 @@
+<script setup>
+    
+</script>
+
 <template>
     <nav>
         <ul class="nav-list">
             <li class="nav-list__item">
                 <a class="nav-list__anchor" href="#">Landing</a>
-            </li>
-            <li class="nav-list__item">
-                <a class="nav-list__anchor" href="#/about">About</a>
             </li>
         </ul>
     </nav>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import Signup from '../components/Signup.vue'
-  defineProps<{ msg: string }>()
+import Signup from '../components/Signup.vue';
+const props = defineProps<{ msg: string }>();
+console.log(props);
 </script>
 
 <template>
@@ -8,7 +9,7 @@
     <div class="intro">
       <h1 class="heading-main">{{ msg }}</h1>
     </div>
-    <div class="content">
+    <div class="content" >
       <signup></signup>
     </div>
   </section>
