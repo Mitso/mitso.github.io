@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import Signup from '../components/Signup.vue';
-const props = defineProps<{ msg: string }>();
-console.log(props);
+
 </script>
 
 <template>
   <section class="landing" id="landing">
     <div class="intro">
-      <h1 class="heading-main">{{ msg }}</h1>
+      <h1 class="heading-main">Home page</h1>
     </div>
     <div class="content" >
       <signup></signup>
@@ -18,6 +17,6 @@ console.log(props);
 <style lang="scss">
   .landing {
     margin: 0 auto;
-    width: 50vw;
+    width: 100%;
   }
 </style>

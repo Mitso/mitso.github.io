@@ -1,11 +1,32 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, provide } from 'vue';
 
-import Navigation from './components/Navigation.vue'
+import Header from './components/Header.vue';
+import Navigation from './components/Navigation.vue';
 
+
+const theme = ref("light");
+const toggleTheme = () => {
+  return theme.value =  theme.value === "light" ? "dark" : "light";
+};
 </script>
 
 <template>
-  <Navigation />
-  <router-view />
+  <section
+    :class="theme" 
+    class="main"
+  >
+    <Header />
+    <div class="wrapper">
+      <div class="top-bar flex justify-end items-end">
+        <Navigation />
+        <button class="theme-toggle" @click="toggleTheme()">
+          {{ theme }}
+        </button>
+      </div>
+      <div class="middle mt-10">
+        <router-view />
+      </div>
+    </div>
+  </section>
 </template>

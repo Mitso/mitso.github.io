@@ -9,6 +9,7 @@
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
+    "types": ["vite/client"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -23,8 +24,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "types": ["vite/client"]
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src/**/*.ts", 
@@ -32,5 +32,8 @@
     "src/**/*.js",
     "src/**/*.vue"
   ],
-  "exclude": []
+  "exclude": [],
+  "references": [{
+    "path": "./tsconfig.json"
+  }]
 }
