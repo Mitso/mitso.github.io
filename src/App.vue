@@ -2,7 +2,7 @@
 import { ref, computed, provide } from 'vue';
 
 import Header from './components/Header.vue';
-import Navigation from './components/Navigation.vue';
+import Navigation from './components/Navigation/Navigation.vue';
 
 
 const theme = ref("light");

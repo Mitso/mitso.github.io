@@ -1,12 +1,25 @@
 <script setup>
     import { ref } from 'vue';
-    
+
     import Login from  './Login.vue';
+    import Signup from  './Signup.vue';
     
-    const isLogin = ref(false);
-    const login = () => {
-        isLogin.value = true;
-    }
+    
+    const openLoginDialog = ref(false);
+    const handleOpenlogin = () => {
+        openLoginDialog.value = true;
+    };
+    const handleCloseLogin = (val) => {
+        openLoginDialog.value = false;
+    };
+
+    const openSignupDialog = ref(false);
+    const handleOpenSignup = () => {
+        openSignupDialog.value = true;
+    };
+    const handleCloseSignup = (val) => {
+        openSignupDialog.value = false;
+    };
 </script>
 
 <template>
@@ -21,16 +34,29 @@
                 <a 
                     href="#" 
                     class="profile-cta__anchor profile-cta__login"
-                    @click="login"
+                    @click="handleOpenlogin"
                 >
                     Login
                 </a>
                 <span class="px-1 profile-cta__pipe">/</span>
-                <a href="#" class="profile-cta__anchor profile-cta__signup">Sign up</a>
+                <a 
+                    href="#" 
+                    class="profile-cta__anchor profile-cta__signup"
+                    @click="handleOpenSignup"
+                >
+                    Sign up
+                </a>
             </p>
         </div>
     </header>
-    <Login :isLogin="isLogin" />
+    <Login 
+        :open-login-dialog="openLoginDialog"
+        @close-login-dialog="handleCloseLogin"
+     />
+     <Signup 
+        :open-signup-dialog="openSignupDialog"
+        @close-signup-dialog="handleCloseSignup"
+     />
 </template>
 
 <style lang="scss">

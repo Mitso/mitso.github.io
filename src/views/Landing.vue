@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Signup from '../components/Signup.vue';
-
+  console.log('<< Welcome to my portfolio >>');
 </script>
 
 <template>
@@ -9,7 +8,7 @@ import Signup from '../components/Signup.vue';
       <h1 class="heading-main">Home page</h1>
     </div>
     <div class="content" >
-      <signup></signup>
+      <p>Home page content</p>
     </div>
   </section>
 </template>
