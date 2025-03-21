@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <dialog class="login-dialog">
+    <dialog class="login-dialog absolute top-[11.5%]">
         <div class="rounded-xl border bg-card text-card-foreground shadow w-[350px]">
             <div class="intro flex items-center justify-between">
                 <div class="flex flex-col gap-y-1.5 p-6 w-full">

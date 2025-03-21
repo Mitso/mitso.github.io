@@ -1,20 +1,23 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
 
-const reactiveNameInput = ref(''),
-    reactivePhoneInput = ref(''),
-    reactiveEmailInput = ref(''),
-    reactiveIsFormSubmited = ref(false);
+const name = ref(''),
+    surname = ref(''),
+    phone = ref(''),
+    email_address = ref(''),
+    username = ref(''),
+    password = ref(''),
+    formSubmit = ref(false);
 
-async function submitSignupForm(e) {
-    let name = document.getElementById('name'),
-        phone = document.getElementById('phone'),
-        email = document.getElementById('email');
-
-    const signupDataObject = {
-        full_name: name.value, //reactiveNameInput.value
-        mobile_number: phone.value, //reactivePhoneInput.value
-        email_address: email.value //reactiveEmailInput.value
+async function handleSignupSubmit(e) {
+    e.preventDefault();
+    const signup_data = {
+        name: name.value,
+        surname: surname.value, 
+        phone: phone.value, 
+        email_address: email_address.value,
+        username: username.value,
+        password: password.value
     };
 
     const apiUri = 'http://localhost:3000/signup';
@@ -24,14 +27,13 @@ async function submitSignupForm(e) {
                 "Content-Type": "application/json",
             },
             method: 'POST',
-            body: JSON.stringify({...signupDataObject})
+            body: JSON.stringify({...signup_data})
         })
-        console.log('Client request body:', response);
         if (response.statusText === 'OK') {
-            reactiveIsFormSubmited.value = true;
+            formSubmit.value = true;
         };
     } catch (error) {
-        reactiveIsFormSubmited.value = false;
+        formSubmit.value = false;
         //An exception
         const postError = new Error('Something has got wrong.');
         console.error('Error >', error.message, postError);
@@ -70,8 +72,8 @@ onMounted(() => {
         2. Create API server 
         3. Connection to API
     -->
-    <dialog class="signup-dialog">
-        <template v-if="reactiveIsFormSubmited">
+    <dialog class="signup-dialog  absolute top-[11.5%]">
+        <template v-if="formSubmit">
             <h2>Thank you for signing up.</h2>
             <figure>
                 <figcaption>Your signup has been submitted successfully.</figcaption>
@@ -100,7 +102,7 @@ onMounted(() => {
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <form @submit.prevent="submitSignupForm" method="post">
+                    <form @submit.prevent="handleSignupSubmit" method="post">
                         <div class="grid w-full items-left gap-4">
                             <div class="flex flex-col space-y-1.5">
                                 <figure>
@@ -112,13 +114,28 @@ onMounted(() => {
                             <label for="name" 
                                     class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
-                                Full name
+                                First name
                             </label>
                             <input 
-                                v-model="reactiveNameInput"
+                                v-model="name"
                                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                                 id="name" 
-                                placeholder="name"
+                                placeholder="Name"
+                                type="text"
+                            >
+                        </div>
+                        <div class="flex flex-col space-y-1.5">
+                            <label for="surname" 
+                                    class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                Surname
+                            </label>
+                            <input 
+                                v-model="surname"
+                                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                id="surname" 
+                                placeholder="Surname"
+                                type="text"
                             >
                         </div>
                         <div class="flex flex-col space-y-1.5">
@@ -135,31 +152,54 @@ onMounted(() => {
                                 Contact number
                             </label>
                             <input 
-                                v-model="reactivePhoneInput"
+                                v-model="phone"
                                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                                 id="phone" 
                                 placeholder="Phone"
+                                type="phone"
                             > 
                         </div>
                         <div class="flex flex-col space-y-1.5">
-                            <!--
-                                1. Select country code
-                                    a) Create an API with phone number codes endpoint.
-                                    b) Fetch list of phone number country codes 
-                                    c) Prepopulate field with select data on code input field.
-                                    d) Conditionaly validate accepting phone number based on selected country code. 
-                            -->
                             <label for="email" 
                                     class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                 Email address
                             </label>
                             <input 
-                                v-model="reactiveEmailInput"
+                                v-model="email_address"
                                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                                 id="email" 
                                 placeholder="Email"
+                                type="email"
                             > 
+                        </div>
+                        <div class="flex flex-col space-y-1.5">
+                            <label for="logname" 
+                                    class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                Username
+                            </label>
+                            <input 
+                                v-model="username"
+                                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                id="logname" 
+                                placeholder="Username"
+                                type="text"
+                            >
+                        </div>
+                        <div class="flex flex-col space-y-1.5">
+                            <label for="passphrase" 
+                                    class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                Password
+                            </label>
+                            <input 
+                                v-model="password"
+                                class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                                id="passphrase" 
+                                placeholder="Password"
+                                type="password"
+                            >
                         </div>
                         <div class="items-center p-6 px-0 flex justify-between">
                             <button 
@@ -177,18 +217,18 @@ onMounted(() => {
                         </div>
                     </form>
                 </div>
-                <div class="data-profile-division" v-if="reactiveNameInput || reactivePhoneInput || reactiveEmailInput">
+                <div class="data-profile-division">
                     <div class="intro flex items-center justify-between">
-                        <div class="flex flex-col gap-y-1.5 p-6 w-full">
+                        <div class="flex flex-col gap-y-1.5 py-6 w-full">
                             <h3 class="font-semibold leading-none tracking-tight">
                                 Profile data:
                             </h3>
                         </div>
                     </div>
                     <div class="data-profile-division__content">
-                        <p>{{ reactiveNameInput }}</p>
-                        <p>{{ reactivePhoneInput }}</p>
-                        <p>{{ reactiveEmailInput }}</p>
+                        <p>Full name: {{ name }} {{ surname }}</p>
+                        <p>Phone number: {{ phone }}</p>
+                        <p>Email address: {{ email_address }}</p>
                     </div>
                 </div>
             </div>
