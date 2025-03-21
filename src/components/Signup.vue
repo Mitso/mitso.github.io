@@ -20,7 +20,7 @@ async function handleSignupSubmit(e) {
         password: password.value
     };
 
-    const apiUri = 'http://localhost:3000/signup';
+    const apiUri = '/';
     try {
         const response = await fetch(apiUri, {
             headers: {
