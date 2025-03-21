@@ -20,7 +20,7 @@ async function handleSignupSubmit(e) {
         password: password.value
     };
 
-    const apiUri = '/';
+    const apiUri = import.meta.env.VITE_DEV_API;
     try {
         const response = await fetch(apiUri, {
             headers: {
@@ -209,7 +209,7 @@ onMounted(() => {
                                 Cancel 
                             </button>
                             <button 
-                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                                class="submit-btn inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
                                 type="submit"
                             >
                                 Submit
@@ -240,5 +240,11 @@ onMounted(() => {
     .data-profile-division {
         margin: 0 30px 0;
         text-align: left;
+    }
+    .submit-btn {
+        border: 1px solid transparent;
+        &:hover {
+            border: 1px solid white;
+        }
     }
 </style>
