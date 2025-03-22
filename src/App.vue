@@ -9,15 +9,23 @@ const theme = ref("light");
 const toggleTheme = () => {
   return theme.value =  theme.value === "light" ? "dark" : "light";
 };
+
+//Navigation
+//console.log(navigator)
+
+//Network
+
+//Location
+//console.log(location)
 </script>
 
 <template>
-  <section
+  <main
     :class="theme" 
     class="main"
   >
     <Header />
-    <div class="wrapper">
+    <section class="wrapper">
       <div class="top-bar flex justify-end items-end">
         <Navigation />
         <button class="theme-toggle" @click="toggleTheme()">
@@ -27,6 +35,6 @@ const toggleTheme = () => {
       <div class="middle mt-10">
         <router-view />
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </template>

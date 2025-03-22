@@ -4,7 +4,6 @@
     import Login from  './Login.vue';
     import Signup from  './Signup.vue';
     
-    
     const openLoginDialog = ref(false);
     const handleOpenlogin = () => {
         openLoginDialog.value = true;
@@ -26,7 +25,7 @@
     <header class="primary-bar flex justify-between w-full h-20 bg-white border-b border-gray-200 px-6 items-center">
         <div class="logo">
             <a href="#" class="logo-name text-xl font-bold">
-                Diary
+                Iziko Lolwazi
             </a>
         </div>
         <div class="profile">

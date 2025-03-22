@@ -55,10 +55,26 @@ button {
   cursor: pointer;
 }
 
+figure {
+  font-weight: bold;
+}
+
+ul {
+  margin: 0 1em;
+}
+
+li {
+  list-style: circle;
+  list-style-position: inside;
+}
+
+nav li {
+  list-style: none;
+  list-style-position: unset;
+}
+
 #app {
   margin: 0 auto;
-  text-align: center;
-  height: 100%;
   width: auto;
 }
 
