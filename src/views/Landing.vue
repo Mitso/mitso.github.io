@@ -1,4 +1,5 @@
 <script setup>
+import Projects from '../components/Projects/Projects.vue';
 //https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance
 import { ref, onMounted } from 'vue';
   const str = ref('');
@@ -64,44 +65,14 @@ import { ref, onMounted } from 'vue';
 </script>
 
 <template>
+  
   <div class="landing" id="landing">
     <div class="intro text-center w-full">
-      <h1 class="heading-main">Home page</h1>
+      <h1 class="heading-main">Welcome to this website.</h1>
     </div>
-    <div class="content flex justify-start w-full items-start">
+    <div class="content">
       <div class="main-content">
-        <h2>The Eastern cape</h2>
-        <p>Eastern cape is the second largest of South Africa's nine provinces.</p>
-        <div class="offers-categorization">
-          <figure>Offers</figure>
-          <p>Eastern cape offers the following:</p> 
-          <ul>
-            <li>snow skiing</li>
-            <li>sunny beaches</li>
-            <li>game researches</li>
-            <li>fascinating history</li>
-          </ul>
-        </div>
-
-        <div class="location-categorization">
-          <figure>Location</figure>
-          <p>Eastern cape is located on the eastern most part of South Africa:</p> 
-          <p>Eastern cape is an area of almost 170,000 square kilometres of diverse landscape</p>
-        </div>
-        <div class="governance-categorization">
-          <figure>Governance</figure>
-          <p>Eastern cape is divided into :</p> 
-          <ul>
-            <li>six district municipalities</li>
-            <li>two metropolitan municipalities</li>
-          </ul>
-          <p>The provinces seat of government is in Bhisho, Buffalo City Metro.</p>
-          <p>
-            The province has a very strong and distinct culture and heritage, 
-            a rich history from the vibrant and timeless Xhosa traditions.
-          </p>
-        </div>
-       
+        <Projects/>
       </div>
 
       <aside>
@@ -133,6 +104,7 @@ import { ref, onMounted } from 'vue';
       </aside>
     </div>
   </div>
+
 </template>
 
 <style lang="scss">
@@ -143,5 +115,12 @@ import { ref, onMounted } from 'vue';
 
   .highlighted {
     background-color: aqua;
+  }
+
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  }
+  .close-dialog {
+    color: #fff;
   }
 </style>

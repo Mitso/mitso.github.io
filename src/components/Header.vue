@@ -19,13 +19,51 @@
     const handleCloseSignup = (val) => {
         openSignupDialog.value = false;
     };
+
+    const theme = ref("light");
+    const toggleTheme = () => {
+    return theme.value =  theme.value === "light" ? "dark" : "light";
+    };
 </script>
 
 <template>
-    <header class="primary-bar flex justify-between w-full h-20 bg-white border-b border-gray-200 px-6 items-center">
+    <header class="primary-bar bg-white border border-b-gray-50 flex justify-between w-full h-20 px-6 items-center">
+       
+        <div class="theme">
+            <!-- <button class="theme-toggle" @click="toggleTheme()">
+                {{ theme }}
+            </button> -->
+            <div 
+                role="group" 
+                dir="ltr" 
+                class="bg-gray-700 border-bg-300 inline-flex rounded-full border cursor-pointer" 
+                tabindex="0" 
+                style="outline: none;"
+            >
+                <button 
+                    type="button" 
+                    data-state="on" 
+                    role="radio" 
+                    aria-checked="true" 
+                    class="text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
+                 
+                >
+                    Dark
+                </button>
+                <button 
+                    type="button" 
+                    data-state="off" 
+                    role="radio" 
+                    aria-checked="false" 
+                    class="text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
+                >
+                    Light
+                </button>
+            </div>
+        </div>
         <div class="logo">
             <a href="#" class="logo-name text-xl font-bold">
-                Iziko Lolwazi
+                Mitso Qalaba
             </a>
         </div>
         <div class="profile">

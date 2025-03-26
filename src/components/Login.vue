@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 const props = defineProps({
     openLoginDialog: Boolean,
@@ -7,44 +7,76 @@ const props = defineProps({
 const getOpenLoginDialog = computed(() => {
     return props.openLoginDialog;
 });
-
 const emit = defineEmits([
     "closeLoginDialog"
 ]);
 onMounted(() => {
-    const loginDialogElem = document.querySelector(".login-dialog");
+    const loginDialogElem = document.getElementById("login_dialog");
+    const loginCloseDialogCross = document.querySelectorAll(".login_close_dialog_cross");
+    const loginCloseDialogBtn = document.querySelectorAll("login_close_dialog_btn");
+
     watch(getOpenLoginDialog, (newVal) => {
         if (newVal === true) {
             loginDialogElem.showModal();
+            [...closeDialogBtn, loginDialogElem].forEach((elem) => {
+                elem.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    loginDialogElem.close();
+                    emit("closeLoginDialog", false);  
+                });
+            })
         }
     });
-
-    const closeDialogBtn = document.querySelectorAll(".close-login-dialog");
-    closeDialogBtn.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            emit("closeLoginDialog", false);  
-            loginDialogElem.close();
-        });
-    });
 });
+
+const name = ref(''),
+    username = ref(''),
+    password = ref(''),
+    formSubmitSuccess = ref(false);
+const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    const login_data = {
+        username: username.value,
+        password: password.value
+    };
+    const apiUri = import.meta.env.VITE_DEV_API + 'login';
+    try {
+        const response = await fetch(apiUri, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: 'POST',
+            body: JSON.stringify({...login_data})
+        })
+        if (response.statusText === 'OK') {
+            formSubmitSuccess.value = true;
+        };
+    } catch (error) {
+        formSubmitSuccess.value = false;
+        //An exception
+        const postError = new Error('Something has got wrong.');
+        console.error('Error >', error.message, postError);
+        throw postError;
+    };
+}
 </script>
 
 <template>
-    <dialog class="login-dialog absolute top-[11.5%]">
+    <dialog id="login_dialog">
         <div class="rounded-xl border bg-card text-card-foreground shadow w-[350px]">
             <div class="intro flex items-center justify-between">
                 <div class="flex flex-col gap-y-1.5 p-6 w-full">
-                    <h3 class="font-semibold leading-none tracking-tight">
+                    <h3 class="text-white font-semibold leading-none tracking-tight">
                         Login
                     </h3>
-                    <p class="text-sm text-muted-foreground">
+                    <p class="text-white text-sm text-muted-foreground">
                         Please login to continue.
                     </p>
                 </div>
                 <div class="absolute right-0 top-0 p-6">
                     <a 
-                        class="close-login-dialog text-sm text-muted-foreground"
+                        class="login-close-dialog text-sm text-muted-foreground"
+                        id="login_close_dialog_cross"
                         href="#" 
                     >
                         x
@@ -53,7 +85,7 @@ onMounted(() => {
             </div>
             
             <div class="p-6 pt-0">
-                <form>
+                <form @submit.prevent="handleLoginSubmit">
                     <div class="grid w-full items-left gap-4">
                         <div class="flex flex-col space-y-1.5">
                             <label for="username" 
@@ -62,6 +94,7 @@ onMounted(() => {
                                 Username
                             </label>
                             <input 
+                                v-model="username"
                                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                                 id="username" 
                                 placeholder="Username"
@@ -74,6 +107,7 @@ onMounted(() => {
                                 Password
                             </label>
                             <input 
+                                v-model="password"
                                 class="label flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                                 id="password" 
                                 placeholder="Password"
@@ -87,68 +121,24 @@ onMounted(() => {
                             >
                                 Framework
                             </label>
-                            <button 
-                                role="combobox" 
-                                type="button" 
-                                aria-controls="reka-select-content-v-13-0" 
-                                aria-expanded="false" 
-                                aria-required="false" 
-                                aria-autocomplete="none" 
-                                dir="ltr" 
-                                data-state="closed" 
-                                
-                                data-placeholder="" 
-                                class="flex h-9 w-full items-center justify-between whitespace-nowrap rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background data-[placeholder]:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&amp;>span]:truncate text-start" 
-                                id="framework">
-                                    <span 
-                                        data-placeholder="Select" 
-                                        style="pointer-events: none;"
-                                    >
-                                        Select
-                                    </span>
-                                    <svg 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        width="24" 
-                                        height="24" 
-                                        viewBox="0 0 24 24" 
-                                        fill="none" 
-                                        stroke="currentColor" 
-                                        stroke-width="2" 
-                                        stroke-linecap="round" 
-                                        stroke-linejoin="round" 
-                                        class="lucide lucide-chevron-down-icon w-4 h-4 opacity-50 shrink-0" 
-                                        aria-hidden="true">
-                                            <path d="m6 9 6 6 6-6"></path>
-                                    </svg>
-                            </button>
-                            <select 
-                                aria-hidden="true" 
-                                tabindex="-1" 
-                                style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); white-space: nowrap; overflow-wrap: normal;"
-                            >
-                                <option value=""></option>
-                                <option value="next"> Next.js</option>
-                                <option value="sveltekit"> SvelteKit </option>
-                                <option value="astro"> Astro </option>
-                                <option value="nuxt"> Nuxt </option>
-                            </select>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="items-center p-6 pt-0 flex justify-between">
                 <button 
-                    class="close-login-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
-                > 
+                    class="login-close-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+                    id="login_close_dialog_btn"
+                    > 
                     Cancel 
                 </button>
                 <button 
                     class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
                 >
-                    Deploy
+                    Submit
                 </button>
             </div>
-    </div>
+        </div>
     </dialog>
 </template>
 
@@ -156,6 +146,7 @@ onMounted(() => {
     label.label {
         padding: 0.5em 0;
     }
+
     dialog {
         background: var(--color-dark-blue);
         margin: 0 auto;

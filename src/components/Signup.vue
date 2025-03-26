@@ -1,6 +1,46 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
 
+const props = defineProps({
+    openSignupDialog: Boolean,
+});
+const getOpenSignupDialog = computed(() => props.openSignupDialog);
+const emit = defineEmits([
+    "closeSignupDialog"
+]);
+onMounted(() => {
+    const signupDialog = document.getElementById('signup_dialog');
+    const signupCloseDialogCross = document.getElementById('signup_close_dialog_cross');
+    const signupCloseDialogBtn = document.getElementById('signup_close_dialog_btn');
+
+    watch(getOpenSignupDialog, (value) => {
+        if (value === true) {
+            signupDialog.showModal();
+            const list = [signupCloseDialogCross, signupCloseDialogBtn, signupDialog]
+            list.forEach((elem) => {
+                elem.addEventListener("click", (e) => {
+                    e.stopPropagation();
+ 
+                    if (e.target.tagName === 'DIALOG') {
+                        console.log('Background') 
+                        signupDialog.close();
+                        emit("closeSignupDialog", false);  
+                    } else {
+                        if (e.target.getAttribute('id') === 'signup_close_dialog_cross' ||
+                            e.target.getAttribute('id') === 'signup_close_dialog_btn'
+                        ) {
+                            console.log('Cross || Button')
+                            signupDialog.close();
+                            emit("closeSignupDialog", false);  
+                        }    
+                    }
+                });
+            })
+        }
+    });
+});
+
+
 const name = ref(''),
     surname = ref(''),
     phone = ref(''),
@@ -20,7 +60,8 @@ async function handleSignupSubmit(e) {
         password: password.value
     };
 
-    const apiUri = import.meta.env.VITE_DEV_API;
+    const apiUri = import.meta.env.VITE_DEV_API + 'signup';
+    console.log(apiUri)
     try {
         const response = await fetch(apiUri, {
             headers: {
@@ -29,9 +70,12 @@ async function handleSignupSubmit(e) {
             method: 'POST',
             body: JSON.stringify({...signup_data})
         })
-        if (response.statusText === 'OK') {
+        console.log(response)
+        if (response.statusText === 'OK' ) {
             formSubmit.value = true;
-        };
+        } else {
+            throw new Error('Something has got wrong.');
+        }
     } catch (error) {
         formSubmit.value = false;
         //An exception
@@ -40,31 +84,6 @@ async function handleSignupSubmit(e) {
         throw postError;
     };
 };
-
-const props = defineProps({
-    openSignupDialog: Boolean,
-});
-const getOpenSignupDialog = computed(() => props.openSignupDialog);
-
-const emit = defineEmits([
-    "closeSignupDialog"
-]);
-onMounted(() => {
-    const signupDialog = document.querySelector('.signup-dialog');
-    watch(getOpenSignupDialog, (value) => {
-        if (value) {
-            signupDialog.showModal();
-        }
-    });
-    const closeSignupDialog = document.querySelectorAll('.close-signup-dialog');
-    closeSignupDialog.forEach(btn => {
-        btn.addEventListener('click', () => {
-            signupDialog.close();
-            emit('closeSignupDialog');
-        });
-    });
-});
-
 </script>
 <template>
     <!--
@@ -72,7 +91,7 @@ onMounted(() => {
         2. Create API server 
         3. Connection to API
     -->
-    <dialog class="signup-dialog  absolute top-[11.5%]">
+    <dialog id="signup_dialog">
         <template v-if="formSubmit">
             <h2>Thank you for signing up.</h2>
             <figure>
@@ -94,7 +113,8 @@ onMounted(() => {
                     </div>
                     <div class="absolute right-0 top-0 p-6">
                         <a 
-                            class="close-signup-dialog text-sm text-muted-foreground"
+                            class="signup-close-dialog text-sm text-muted-foreground"
+                            id="signup_close_dialog_cross"
                             href="#" 
                         >
                             x
@@ -102,7 +122,7 @@ onMounted(() => {
                     </div>
                 </div>
                 <div class="p-6 pt-0">
-                    <form @submit.prevent="handleSignupSubmit" method="post">
+                    <form @submit.prevent="handleSignupSubmit">
                         <div class="grid w-full items-left gap-4">
                             <div class="flex flex-col space-y-1.5">
                                 <figure>
@@ -203,7 +223,8 @@ onMounted(() => {
                         </div>
                         <div class="items-center p-6 px-0 flex justify-between">
                             <button 
-                                class="close-signup-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+                                class="signup-close-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+                                id="signup_close_dialog_btn"
                                 type="reset"
                             >
                                 Cancel 
@@ -234,6 +255,7 @@ onMounted(() => {
             </div>
         </template>
     </dialog>
+   
 </template>
 
 <style lang="scss">
