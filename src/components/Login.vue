@@ -12,33 +12,47 @@ const emit = defineEmits([
 ]);
 onMounted(() => {
     const loginDialogElem = document.getElementById("login_dialog");
-    const loginCloseDialogCross = document.querySelectorAll(".login_close_dialog_cross");
-    const loginCloseDialogBtn = document.querySelectorAll("login_close_dialog_btn");
+    const loginCloseDialogCross = document.getElementById("login_close_dialog_cross");
+    const loginCloseDialogBtn = document.getElementById("login_close_dialog_btn");
 
     watch(getOpenLoginDialog, (newVal) => {
         if (newVal === true) {
             loginDialogElem.showModal();
-            [...closeDialogBtn, loginDialogElem].forEach((elem) => {
+            [loginCloseDialogBtn, loginCloseDialogCross, loginDialogElem].forEach((elem) => {
                 elem.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    loginDialogElem.close();
-                    emit("closeLoginDialog", false);  
+                    e.stopPropagation();
+                    if (e.target.tagName === 'DIALOG') {
+                        console.log('Background') 
+                        loginDialogElem.close();
+                        emit("closeLoginDialog", false);  
+                    } else {
+                        if (e.target.getAttribute('id') === 'login_close_dialog_cross' ||
+                            e.target.getAttribute('id') === 'login_close_dialog_btn'
+                        ) {
+                            console.log('Cross || Button')
+                            loginDialogElem.close();
+                            emit("closeLoginDialog", false);    
+                        }    
+                    }
                 });
             })
         }
     });
 });
 
-const name = ref(''),
-    username = ref(''),
+const username = ref(''),
     password = ref(''),
     formSubmitSuccess = ref(false);
-const handleLoginSubmit = async (e) => {
-    e.preventDefault();
+async function handleLoginSubmit () {
+    // const user_data = localStorage.getItem("user");
+    // const results = JSON.parse(user_data);
+
     const login_data = {
         username: username.value,
-        password: password.value
-    };
+        password: password.value,
+        // id: results.user_id, 
+        // email: results.email
+    }
     const apiUri = import.meta.env.VITE_DEV_API + 'login';
     try {
         const response = await fetch(apiUri, {
@@ -47,9 +61,13 @@ const handleLoginSubmit = async (e) => {
             },
             method: 'POST',
             body: JSON.stringify({...login_data})
-        })
+        });
+        console.log('Response:', response);
         if (response.statusText === 'OK') {
+            const data = await response.json();
             formSubmitSuccess.value = true;
+            console.log('Login data:', data);
+            res.status(201).json(data.user.user_metadata);
         };
     } catch (error) {
         formSubmitSuccess.value = false;
@@ -113,31 +131,25 @@ const handleLoginSubmit = async (e) => {
                                 placeholder="Password"
                             >
                         </div>
-
-                        <div class="flex flex-col space-y-1.5">
-                            <label 
-                                for="framework" 
-                                class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                            >
-                                Framework
-                            </label>
-                        </div>
+                    </div>
+                    <div class="items-center py-6 flex justify-between">
+                        <button 
+                            class="login-close-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
+                            id="login_close_dialog_btn"
+                            type="reset"
+                        > 
+                            Cancel 
+                        </button>
+                        <button 
+                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
                     </div>
                 </form>
             </div>
-            <div class="items-center p-6 pt-0 flex justify-between">
-                <button 
-                    class="login-close-dialog inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2"
-                    id="login_close_dialog_btn"
-                    > 
-                    Cancel 
-                </button>
-                <button 
-                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
-                >
-                    Submit
-                </button>
-            </div>
+            
         </div>
     </dialog>
 </template>

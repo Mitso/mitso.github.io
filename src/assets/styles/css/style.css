@@ -59,8 +59,18 @@ button {
   cursor: pointer;
 }
 
+dialog {
+  margin: 1em auto 0;
+}
+
 figure {
   font-weight: bold;
+  padding: 1em;
+}
+
+figcaption {
+  font-size: 14px;
+  font-weight: normal;
 }
 
 ul {

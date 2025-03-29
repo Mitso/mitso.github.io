@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
 
+
 const props = defineProps({
     openSignupDialog: Boolean,
 });
@@ -43,25 +44,23 @@ onMounted(() => {
 
 const name = ref(''),
     surname = ref(''),
-    phone = ref(''),
+    mobile = ref(''),
     email_address = ref(''),
     username = ref(''),
     password = ref(''),
     formSubmit = ref(false);
 
-async function handleSignupSubmit(e) {
-    e.preventDefault();
+async function handleSignupSubmit() {
     const signup_data = {
         name: name.value,
         surname: surname.value, 
-        phone: phone.value, 
+        mobile: mobile.value, 
         email_address: email_address.value,
         username: username.value,
         password: password.value
     };
 
     const apiUri = import.meta.env.VITE_DEV_API + 'signup';
-    console.log(apiUri)
     try {
         const response = await fetch(apiUri, {
             headers: {
@@ -69,19 +68,20 @@ async function handleSignupSubmit(e) {
             },
             method: 'POST',
             body: JSON.stringify({...signup_data})
-        })
-        console.log(response)
-        if (response.statusText === 'OK' ) {
+        });
+      
+        if (response.statusText === 'Created' ) {
+            const data = await response.json();
             formSubmit.value = true;
+            const user_data = localStorage.getItem("user");
+            if(!user_data) localStorage.setItem('user', JSON.stringify(data));
         } else {
             throw new Error('Something has got wrong.');
         }
     } catch (error) {
         formSubmit.value = false;
-        //An exception
-        const postError = new Error('Something has got wrong.');
-        console.error('Error >', error.message, postError);
-        throw postError;
+        console.error('Error >', error.message);
+        throw error;
     };
 };
 </script>
@@ -93,9 +93,12 @@ async function handleSignupSubmit(e) {
     -->
     <dialog id="signup_dialog">
         <template v-if="formSubmit">
-            <h2>Thank you for signing up.</h2>
             <figure>
-                <figcaption>Your signup has been submitted successfully.</figcaption>
+                <h2>Thank you for signing up.</h2>
+                <figcaption>
+                    Please verify your account via your email, <br/>
+                    <i><b>If you cannot find email in your inbox, please check the spam folder.</b></i>
+                </figcaption>
             </figure>
         </template>
         <template v-else>
@@ -161,22 +164,22 @@ async function handleSignupSubmit(e) {
                         <div class="flex flex-col space-y-1.5">
                             <!--
                                 1. Select country code
-                                    a) Create an API with phone number codes endpoint.
-                                    b) Fetch list of phone number country codes 
+                                    a) Create an API with mobile number codes endpoint.
+                                    b) Fetch list of mobile number country codes 
                                     c) Prepopulate field with select data on code input field.
-                                    d) Conditionaly validate accepting phone number based on selected country code. 
+                                    d) Conditionaly validate accepting mobile number based on selected country code. 
                             -->
-                            <label for="phone" 
+                            <label for="mobile" 
                                     class="label text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                 Contact number
                             </label>
                             <input 
-                                v-model="phone"
+                                v-model="mobile"
                                 class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
-                                id="phone" 
-                                placeholder="Phone"
-                                type="phone"
+                                id="mobile" 
+                                placeholder="Mobile"
+                                type="mobile"
                             > 
                         </div>
                         <div class="flex flex-col space-y-1.5">
@@ -248,7 +251,7 @@ async function handleSignupSubmit(e) {
                     </div>
                     <div class="data-profile-division__content">
                         <p>Full name: {{ name }} {{ surname }}</p>
-                        <p>Phone number: {{ phone }}</p>
+                        <p>Mobile number: {{ mobile }}</p>
                         <p>Email address: {{ email_address }}</p>
                     </div>
                 </div>
