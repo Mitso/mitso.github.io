@@ -27,16 +27,23 @@
 </script>
 
 <template>
-    <header class="primary-bar bg-white border border-b-gray-50 flex justify-between w-full h-20 px-6 items-center">
-       
-        <div class="theme">
-            <!-- <button class="theme-toggle" @click="toggleTheme()">
+    <header class="header primary-bar border w-full md:h-20 px-[1em]">
+        <div class="logo header-item">
+            <a href="#" class="logo-name text-xl font-bold">
+                Mitso Qalaba
+            </a>
+        </div>
+        <div class="theme header-item">
+            <!-- <button class="header-toggle" @click="toggleTheme()">
                 {{ theme }}
-            </button> -->
+            </button> 
+            m-0 flex list-none rounded-[6px] bg-white p-1 
+            -->
+            <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon h-5 w-5"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></button>
             <div 
                 role="group" 
                 dir="ltr" 
-                class="bg-gray-700 border-bg-300 inline-flex rounded-full border cursor-pointer" 
+                class="header-toggle bg-[var(--color-very-dark-blue)] text-white inline-flex center rounded-full cursor-pointer py-[0.2em] px-[1em]" 
                 tabindex="0" 
                 style="outline: none;"
             >
@@ -45,28 +52,24 @@
                     data-state="on" 
                     role="radio" 
                     aria-checked="true" 
-                    class="text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
+                    class="header-toggle__item text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
                  
                 >
                     Dark
                 </button>
+                <span class="header-toggle__divider">|</span>
                 <button 
                     type="button" 
                     data-state="off" 
                     role="radio" 
                     aria-checked="false" 
-                    class="text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
+                    class="header-toggle__item text-text-500 border-0.5 flex items-center rounded-full font-medium gap-1 py-1 pl-2.5 pr-2.5 text-xs" 
                 >
                     Light
                 </button>
             </div>
         </div>
-        <div class="logo">
-            <a href="#" class="logo-name text-xl font-bold">
-                Mitso Qalaba
-            </a>
-        </div>
-        <div class="profile">
+        <div class="profile header-item">
             <p class="profile-cta flex justify-evenly align-center">
                 <a 
                     href="#" 
@@ -97,19 +100,47 @@
 </template>
 
 <style lang="scss">
+.header {
+    background-color: var(--color-some);
+    border-color: var(--color-grayish-blue);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    &-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        &:first-child {
+            justify-content: start;
+        }
+        &:last-child {
+            justify-content: end;
+        }
+    }
+    &-toggle {
+        &__item {
+            color: var(--color-white);
+        }
+    }
+}
+
 .logo {
-    color: #000;
-    font-weight: 700;
+    &-name {
+        color: #000;
+        font-size: 2em;
+        font-weight: 900;
+    }
 }
 
 .light {
     .logo-name {
-        color: #000;
+        color: var(--colo-black);
     }
 }
 .dark {
     .logo-name {
-        color: #fff;
+        color: var(--color-white);
     }
 }
 
@@ -117,9 +148,9 @@
     .profile-cta {
         font-size: 14px;
         &__anchor {
-            color: #000;
+            color: var(--color-black);
             &:hover {
-                color: #535bf2;
+                color: var(--color-soft-blue);
             }
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="projects">
-        <h3 class="title">Company websites I have worked on</h3>
+        <h3 class="title text-2xl">Company websites I have worked on</h3>
         <dl class="project-list">
             <div class="project-list-group">
                 <dt class="project-list__name">Superbalist</dt>
@@ -30,15 +30,19 @@
 <style lang="scss">
 .projects {
     text-align: center;
-    margin: 5em 7em;
+    margin: 0 7em;
     .title {
-        margin: 2em 1em 1em;
+        color: var(---color-dark-desaturated-blue);
+        margin: 1em 1em 2em;
         font-weight: 500;
     }
     .project-list {
         align-items: center;
+        color: var(--color-white);
         display: flex;
+        flex-flow: wrap;
         justify-content: space-evenly;
+
         &-group {
             background-color: var(--color-black-gray);
             border-radius: 100%;
@@ -48,16 +52,16 @@
             flex-direction: column;
             justify-content: center;
             padding: 1em;
+            margin: 1em;
             text-align: center;
             @media screen and (min-width: 670px) {
+                margin: 0;
                 width: 200px;
                 height: 200px;
             }
         }
        
-       
         &__name {
-            color: white;
             font-size: 20px;
         }
         &__desc {

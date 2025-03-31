@@ -15,20 +15,12 @@ import Navigation from './components/Navigation/Navigation.vue';
 
 <template>
   <div class="root">
-    <div class="zoom-background"></div>
-  </div>
-
-  <div class="overlay-root">
-    <div class="zoom-background"></div>
       <Header />
       <section class="wrapper">
         <div class="top-bar flex justify-end items-end">
           <Navigation />
         </div>
-        <div class="middle mt-10">
-          <router-view />
-        </div>
+        <router-view />
       </section>
-    
   </div>
 </template>
