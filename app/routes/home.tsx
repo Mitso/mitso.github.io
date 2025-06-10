@@ -26,6 +26,11 @@ export default function Home() {
         hasArticles={false}
         centerText={true}
        />
+       <Section 
+        heading='Welcome to the website.'
+        hasArticles={true}
+        centerText={false}
+       />
     </>
   )
   
